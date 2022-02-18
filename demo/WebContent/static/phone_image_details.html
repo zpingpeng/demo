@@ -1,0 +1,586 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+
+body {
+    position: relative;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
+    font-size: 1.5rem;
+    background: #f0f0f0;
+}
+
+p, hr, ul, ol, dl, blockquote, pre, address, fieldset, figure {
+    margin: 0;
+}
+
+.am-header {
+    position: relative;
+    width: 100%;
+}
+.am-header-default {
+    background-color: #fff;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, main, nav, section, summary {
+    display: block;
+}
+
+.header {
+    height: 55px;
+    background: rgba(255,255,255,0.7);
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 1px 6px #ffcfcf;
+}
+
+.header-left {
+    float: left;
+    font-size: 2rem;
+    line-height: 55px;
+}
+.am-header .am-header-nav {
+    /* position: absolute; */
+    padding-left: 0.5em;
+    font-size: 1.8rem;
+    color: #121f45;
+}
+.header-left span {
+    font-weight: bold;
+    left: 3em;
+}
+
+.header-left i {
+    font-size: 2.4rem;
+    padding-right: 0.2em;
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    padding-right: 0.8em;
+    padding-left: 0.2em;
+}
+
+
+/* 新闻类别 */
+.nav_bar {
+    position: relative;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    width: 91%;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav_box {
+    height: 4.5rem;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    line-height: 4.49rem;
+    padding: 0rem 1rem;
+}
+
+.nav_box li {
+    display: inline-block;
+    margin: 0rem 0.65rem;
+}
+
+.nav_box a {
+    color: #888888;
+    line-height: 3rem;
+    font-size: 1.4rem;
+    border-radius: .5rem;
+    display: inline-block;
+    padding: 0rem 0.1rem;
+}
+
+
+/* 内容 */
+.list_news {
+    background-color: #fff;
+    margin-top: 2.5rem;
+}
+.list_news {
+    background-color: #fff;
+    padding: 10px 0px;
+    margin: 0.5em 0em;
+}
+
+.list_news ul {
+    /* width: 350px; */
+    overflow: hidden;
+}
+ul, li {
+    list-style: none;
+    line-height: 20px;
+}
+
+.list_news li {
+    position: relative;
+    display: block;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dedede;
+    border-width: 1px 0;
+    overflow: hidden;
+    margin: 1em 1em;
+    padding-bottom: 0.8em;
+}
+
+.list_news li .list-thumb {
+    width: 30%;
+    position: relative;
+    float: left;
+    padding-right: 0.5em;
+}
+
+a {
+    color: #808080;
+}
+
+.list_news li .list-main {
+    float: right;
+    width: 68%;
+}
+
+.list_news li .list-thumb img {
+    width: 100%;
+    display: block;
+}
+
+.list_news li .list-main h3 {
+    font-size: 1.4rem;
+}
+
+.list_news li .list-main span {
+    margin-top: .5rem;
+    color: #808080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.3em;
+    -webkit-line-clamp: 2;
+    max-height: 2.6em;
+}
+
+
+/* 加载 */
+.jiazai {
+    background: #fff;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 2px 2px 0 0;
+    text-align: center;
+}
+.jiazai a:hover {
+    color: #ff2400;
+}
+
+/* 意见 */
+.foot_navs {
+    margin: 2em 0em;
+}
+.foot_nav {
+    width: 100%;
+    background: #fff;
+    margin: 0.9em 0em;
+}
+.foot_nav ul {
+    overflow: hidden;
+    padding: 1em 0em;
+}
+
+.foot_nav ul li {
+    float: left;
+    width: 33%;
+    -webkit-box-flex: 1;
+    border-right: 0.1rem solid #ccc;
+    text-align: center;
+}
+.foot_nav ul li a {
+    font-size: 1.6rem;
+}
+
+/* 底部 */
+.am-footer-default {
+    background-color: #f0f0f0;
+}
+.am-footer {
+    text-align: center;
+    padding: 1em 0;
+    font-size: 1.6rem;
+}
+
+.am-footer-miscs {
+    color: #999999;
+    font-size: 13px;
+    padding-bottom: 5em;
+}
+
+@media only screen and (min-width: 641px)
+.am-footer-default .am-footer-miscs p {
+    display: inline-block;
+    margin: 5px;
+}
+.am-footer-miscs p {
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+
+
+
+/* -----------------------底下图标 */
+.nav {
+/*     max-width: 720px; */
+    min-width: 320px;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.9;
+    margin: 0 auto;
+    bottom: 0px;
+    z-index: 10000;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.nav a {
+    width: 25%;
+    max-height: 90px;
+    height: auto;
+    display: block;
+    float: left;
+}
+/* -----------------------底下图标 */
+
+/* -----------------------图片 */
+.pro_list {
+    width: 100%;
+    background: #f0f0f0;
+    padding-top: 0.4em;
+}
+.pro_list ul {
+    overflow: hidden;
+    padding-left: 0;
+}
+ul, ol {
+    padding: 0;
+}
+
+.pro_list ul li {
+    width: 49.4%;
+    display: inline-block;
+    background: #fff;
+    padding-bottom: 1em;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+ul, li {
+    list-style: none;
+}
+
+.pro_list a {
+    font-size: 14px;
+    color: #121f45;
+    display: block;
+    line-height: 18px;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+    /* padding-left: 0.5em; */
+}
+.pro_list a, .pro_text a, .pro_list p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+}
+
+.pro_list ul li img {
+    width: 100%;
+}
+img {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 0;
+}
+.pro_list a {
+    font-size: 14px;
+    color: #121f45;
+    display: block;
+    line-height: 18px;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+    /* padding-left: 0.5em; */
+}
+.pro_list a, .pro_text a, .pro_list p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+}
+/* -----------------------底下图标 */
+
+</style>
+</head>
+<body >
+
+<header data-am-widget="header" class="am-header am-header-default am-no-layout">
+  <div class="header">
+      <div class="header-left">
+          <!-- <a href="http://www.17350.com/" class="am-header-nav"> -->
+          <a href="javascript:;" class="am-header-nav" onclick="javascript:history.back(-1);">
+             <i class="iconfont" aria-hidden="true"></i>
+          </a>
+		  						<span>新闻中心</span>
+		 		  		 				 
+       </div>
+  </div>
+  <!--nav-->
+  <div class="nav_bar_wrap">
+    <nav class="nav_bar">
+      <ul class="nav_box clearfix">
+	   <!--  	 -->
+	   	 
+				  <li>
+			<a href="https://www.17350.com/news/gongsi_1.html"><p>公司新闻</p></a>
+		  </li>
+		  		  <li>
+			<a href="https://www.17350.com/news/hangye_1.html"><p>行业动态</p></a>
+		  </li>
+		  		  <li>
+			<a href="https://www.17350.com/news/pingce_1.html"><p>专汽评测</p></a>
+		  </li>
+		  		  <li>
+			<a href="https://www.17350.com/news/cuxiao_1.html"><p>促销导购</p></a>
+		  </li>
+		  		      </ul>
+    </nav>
+   </div>	  
+</header>
+
+
+
+
+
+
+
+
+
+
+
+
+<div  class="pro_list">
+  <ul id="content">
+	               <li>
+	    <a href="https://www.17350.com/photo/qingzhangche/3281.html"><img src="http://upload.17350.com/2020/0718/20200718113610131.jpg" alt="福田欧航单桥一拖二清障车(带吊)"></a>
+        <a href="https://www.17350.com/photo/qingzhangche/3281.html">福田欧航单桥一拖二清障车(带吊)</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiwuche/3280.html"><img src="http://upload.17350.com/2020/0717/20200717103036154.jpg" alt="东风多利卡D9国六11.58方吸污车"></a>
+        <a href="https://www.17350.com/photo/xiwuche/3280.html">东风多利卡D9国六11.58方吸污车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/lengcangche/3279.html"><img src="http://upload.17350.com/2020/0717/20200717094433743.jpg" alt="解放J6L小三轴国五8.7米冷藏车"></a>
+        <a href="https://www.17350.com/photo/lengcangche/3279.html">解放J6L小三轴国五8.7米冷藏车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/lengcangche/3278.html"><img src="http://upload.17350.com/2020/0717/20200717092941721.jpg" alt="华晨金杯T30国六2.84米冷藏车"></a>
+        <a href="https://www.17350.com/photo/lengcangche/3278.html">华晨金杯T30国六2.84米冷藏车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/lengcangche/3277.html"><img src="http://upload.17350.com/2020/0717/20200717091818848.jpg" alt="河北长安睿行M80国六面包冷藏车"></a>
+        <a href="https://www.17350.com/photo/lengcangche/3277.html">河北长安睿行M80国六面包冷藏车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/gongyeche/3276.html"><img src="http://upload.17350.com/2020/0715/20200715114036691.jpg" alt="东风天龙VL前四后八国五25.8方供液车"></a>
+        <a href="https://www.17350.com/photo/gongyeche/3276.html">东风天龙VL前四后八国五25.8方供液车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/gongyeche/3275.html"><img src="http://upload.17350.com/2020/0715/20200715110651182.jpg" alt="解放悍V前四后六国五25.2方供液车"></a>
+        <a href="https://www.17350.com/photo/gongyeche/3275.html">解放悍V前四后六国五25.2方供液车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/gongyeche/3274.html"><img src="http://upload.17350.com/2020/0715/20200715103751407.jpg" alt="重汽豪沃T5G后双桥国五17方供液车"></a>
+        <a href="https://www.17350.com/photo/gongyeche/3274.html">重汽豪沃T5G后双桥国五17方供液车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/youguanche/3273.html"><img src="http://upload.17350.com/2020/0715/20200715094236129.jpg" alt="奔驰后双桥铝合金运油车"></a>
+        <a href="https://www.17350.com/photo/youguanche/3273.html">奔驰后双桥铝合金运油车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/youguanche/3272.html"><img src="http://upload.17350.com/2020/0710/20200710094253765.jpg" alt="解放悍V2.0高顶前四后六25.9方铝合金运油车"></a>
+        <a href="https://www.17350.com/photo/youguanche/3272.html">解放悍V2.0高顶前四后六25.9方铝合金运油车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/youguanche/3271.html"><img src="http://upload.17350.com/2020/0710/20200710085707751.jpg" alt="重汽豪沃T5G后双桥国五24方铝合金运油车"></a>
+        <a href="https://www.17350.com/photo/youguanche/3271.html">重汽豪沃T5G后双桥国五24方铝合金运油车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3270.html"><img src="http://upload.17350.com/2020/0709/20200709112459297.jpg" alt="重汽豪沃单桥水罐消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3270.html">重汽豪沃单桥水罐消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3269.html"><img src="http://upload.17350.com/2020/0709/20200709112038491.jpg" alt="重汽豪沃后双桥干粉联用消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3269.html">重汽豪沃后双桥干粉联用消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3268.html"><img src="http://upload.17350.com/2020/0709/20200709111639274.jpg" alt="重汽豪沃单桥TX泡沫消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3268.html">重汽豪沃单桥TX泡沫消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3267.html"><img src="http://upload.17350.com/2020/0709/20200709111337927.jpg" alt="庆铃五十铃双排水罐消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3267.html">庆铃五十铃双排水罐消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3266.html"><img src="http://upload.17350.com/2020/0709/20200709110039643.jpg" alt="庆铃五十铃FVZ后双桥泡沫消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3266.html">庆铃五十铃FVZ后双桥泡沫消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3265.html"><img src="http://upload.17350.com/2020/0709/20200709102253406.jpg" alt="重汽豪沃单桥抢险救援消防车前置牵引钩"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3265.html">重汽豪沃单桥抢险救援消防车前置牵引钩</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3264.html"><img src="http://upload.17350.com/2020/0709/20200709101606429.jpg" alt="庆铃五十铃ELF双排水罐消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3264.html">庆铃五十铃ELF双排水罐消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiaofangche/3263.html"><img src="http://upload.17350.com/2020/0709/20200709101310225.jpg" alt="重汽豪沃国五水罐消防车"></a>
+        <a href="https://www.17350.com/photo/xiaofangche/3263.html">重汽豪沃国五水罐消防车</a>
+      </li>
+            <li>
+	    <a href="https://www.17350.com/photo/xiwuche/3262.html"><img src="http://upload.17350.com/2020/0709/20200709083938869.jpg" alt="东风途逸国六1.96方吸污车"></a>
+        <a href="https://www.17350.com/photo/xiwuche/3262.html">东风途逸国六1.96方吸污车</a>
+      </li>
+             </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="jiazai"><a href="javascript:void(0)" onclick="getjosn(0)">点击继续加载</a></div>
+
+
+
+
+<div class="foot_nav foot_navs">
+    <ul>
+       <li><a href="https://www.17350.com/about/about.html">关于专汽网</a></li>
+       <li><a href="https://www.17350.com/news/">文章中心</a></li>
+       <li><a href="https://www.17350.com/index.php?m=formguide&amp;c=index&amp;a=show&amp;formid=33&amp;siteid=1">意见反馈</a></li>
+    </ul>
+</div>
+
+<footer data-am-widget="footer" class="am-footer am-footer-default am-no-layout" data-am-footer="{  }">
+    <div class="am-footer-miscs ">
+        <p>Copyright © 2014-2017 All Rights Reserved.</p>
+        <p> 湖北专汽网科技有限公司 版权所有</p>
+    </div>
+  </footer>
+
+
+
+
+
+
+
+
+
+<div class="nav">
+	  <a href="http://www.17350.com/" class="home">
+	  <img src="http://images.17350.com/images/m_icon00.png"></a>
+	  <a href="http://www.17350.com/product/" class="zhenche">
+	  <img src="http://images.17350.com/images/m_icon01.png"></a>
+	  <a href="http://wpa.qq.com/msgrd?V=1&amp;uin=1735095511&amp;Site=专汽网&amp;Menu=yes'" target="_blank">
+	  <img src="http://images.17350.com/images/m_icon02.png"></a>
+	  <a href="tel:18008665020" class="phone">
+	  <img src="http://images.17350.com/images/m_icon03.png"></a> 
+	  </div>
+
+
+
+
+
+</body>
+  <script>
+  
+  
+  var type="行业动态"
+      
+      
+      
+	//  get_pagination()
+  //根据区域获取服务站..分页
+  function get_pagination(param_type){
+	  if(param_type!==undefined){
+		  type= param_type
+	  }
+	  
+	  var paramter={
+	 	 type:type
+  		   }
+	
+	  var dataarr=zw.ajax({url:"../news_query",parameter:paramter}).data;
+ 
+	  
+	  
+
+	  
+	  
+ 	  var service_content= document.getElementById('content');
+	  service_content.innerHTML='';
+	  for(var i=0;i<dataarr.length;i++){
+		  console.log(decodeURIComponent(dataarr[i].introduction))
+		service_content.innerHTML +='<li>'
+		
+		+'	<div class="list-thumb">'
+		+' <a href="phone_news_details.html?id='+dataarr[i].id+'">'
+		 +'   '+decodeURIComponent(dataarr[i].img)+'  </a>  '    
+		   +'	</div>'
+		+'	<div class="list-main">'
+		+'   <a href="phone_news_details.html?id='+dataarr[i].id+'">'+decodeURIComponent(dataarr[i].title)+''
+		   +'   <span>'+dataarr[i].update_time+'</span></a>'
+		   +'</div>'
+		+'</li>'
+		
+	  }
+	  
+	  
+	  
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+      </script>
+</html>

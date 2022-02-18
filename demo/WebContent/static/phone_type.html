@@ -1,0 +1,268 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+body {
+    position: relative;
+    background: #f0f0f0;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
+    font-size: 1.5rem;
+}
+
+ul, li {
+    list-style: none;
+    line-height: 20px;
+}
+
+html {
+    font-size: .6rem;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* -----------------------底下图标 */
+.nav {
+/*     max-width: 720px; */
+    min-width: 320px;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.9;
+    margin: 0 auto;
+    bottom: 0px;
+    z-index: 10000;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.nav a {
+    width: 25%;
+    max-height: 90px;
+    height: auto;
+    display: block;
+    float: left;
+}
+/* -----------------------底下图标 */
+
+
+/* 车型分类头部 */
+.am-header .header-top {
+    height: 55px;
+    background: rgba(255,255,255,0.7);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 1px 6px #ffcfcf;
+}
+.am-header .header-top {
+    height: 55px;
+    background: rgba(255,255,255,0.7);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 1px 6px #ffcfcf;
+}
+.header-left {
+    float: left;
+    font-size: 2rem;
+    line-height: 55px;
+}
+
+.header-left span {
+    font-weight: bold;
+    left: 3em;
+}
+
+/* 车型分类头部 */
+
+.pro-class-list {
+    position: relative;
+    background: #f2f2f2;
+    margin-top: 0.2em;
+}
+
+.pro-class-list li {
+    box-shadow: 0 0px 1px #ff5252;
+}
+
+ul, li {
+    list-style: none;
+}
+
+*, *:before, *:after {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.pro-class-list .pro-icon1 {
+    background-position: -21px 2px;
+}
+
+.pro-class-list .title {
+    color: #ff5252;
+    font-size: 18px;
+    font-weight: bold;
+    background: url(http://images.17350.com/m/pro_icon.png)no-repeat;
+    height: 80px;
+    padding-left: 1.5em;
+    vertical-align: bottom;
+    display: table-cell;
+    width: 200px;
+    background-size: 80%;
+}
+
+.pro-class-list .pro-class {
+    background-color: #fff;
+    padding: 2em 0.5em;
+}
+
+.pro-class-list .pro-class a {
+    font-size: 1.6rem;
+    padding: 0em 1.2em;
+    color: #121f45;
+    line-height: 40px;
+    display: inline-block;
+}
+
+</style>
+</head>
+<body >
+
+<header data-am-widget="header" class="am-header am-header-default am-no-layout" style="height:55px">
+
+
+	  <div class="header-top">
+        <div class="header-left">
+          <!-- <a href="/" class="am-header-nav"> -->
+          <a href="javascript:;" class="am-header-nav" onclick="javascript:history.back(-1);">	
+          </a>
+		  <span>车型分类</span>
+        </div>
+	 </div> 
+  </header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="pro-class-list">
+      <ul>	     <li>		    <div class="title pro-icon1">环卫绿化</div>
+            <div class="pro-class">
+<!--  -->
+				     <a href="/sashuiche/">洒水车</a><!-- /page// -->
+				     <a href="/lajiche/">垃圾车</a><!-- /page// -->
+				     <a href="/xiwuche/">吸污车</a><!-- /page// -->
+				     <a href="/xifenche/">吸粪车</a><!-- /page// -->
+				     <a href="/qingxiche/">高压清洗车</a><!-- /page// -->
+				     <a href="/saoluche/">扫路车</a><!-- /page// -->
+				     <a href="/yichenche/">抑尘车</a><!-- /page// -->
+				     <a href="/qxxwc/">清洗吸污车</a><!-- /page// -->
+				     <a href="/xsc/">洗扫车</a><!-- /page// -->
+				     <a href="/xcc/">吸尘车</a><!-- /page// -->
+				     <a href="/hlqyc/">护栏清洗车</a><!-- /page// -->
+			</div>
+		 </li>
+		 	     <li>		    <div class="title pro-icon2">货物运输</div>
+            <div class="pro-class">
+<!--  -->
+				     <a href="/shouhuoche/">售货车</a><!-- /page// -->
+				     <a href="/lengcangche/">冷藏车</a><!-- /page// -->
+				     <a href="/guanggaoche/">LED广告车</a><!-- /page// -->
+				     <a href="/pingbanche/">平板运输车</a><!-- /page// -->
+				     <a href="/siliaoche/">散装饲料运输车</a><!-- /page// -->
+				     <a href="/wutaiche/">舞台车</a><!-- /page// -->
+				     <a href="/xiangshihuoche/">厢式货车</a><!-- /page// -->
+				     <a href="/cangshanche/">仓栅车</a><!-- /page// -->
+				     <a href="/jyc/">轿运车</a><!-- /page// -->
+				     <a href="/ylfwzyc/">医疗废物转运车</a><!-- /page// -->
+			</div>
+		 </li>
+		 	     <li>		    <div class="title pro-icon3">工程建筑</div>
+            <div class="pro-class">
+<!--  -->
+				     <a href="/suichediao/">随车吊</a><!-- /page// -->
+				     <a href="/jiaobanche/">搅拌车</a><!-- /page// -->
+				     <a href="/fenliwuliaoche/">粉粒物料运输车</a><!-- /page// -->
+				     <a href="/zixieche/">自卸车</a><!-- /page// -->
+			</div>
+		 </li>
+		 	     <li>		    <div class="title pro-icon4">危险品运输</div>
+            <div class="pro-class">
+<!--  -->
+				     <a href="/youguanche/">油罐车</a><!-- /page// -->
+				     <a href="/fangbaoche/">防爆车</a><!-- /page// -->
+				     <a href="/huagongyetiche/">化工液体运输车</a><!-- /page// -->
+				     <a href="/yrqtxsc/">易燃气体厢式车</a><!-- /page// -->
+			</div>
+		 </li>
+		 	     <li>		    <div class="title pro-icon5">特种作业</div>
+            <div class="pro-class">
+<!--  -->
+				     <a href="/qingzhangche/">清障车</a><!-- /page// -->
+				     <a href="/xiaofangche/">消防车</a><!-- /page// -->
+				     <a href="/gaokongzuoyeche/">高空作业车</a><!-- /page// -->
+				     <a href="/fangche/">房车</a><!-- /page// -->
+				     <a href="/xiaoche/">校车</a><!-- /page// -->
+				     <a href="/keche/">客车</a><!-- /page// -->
+				     <a href="/jiaolianche/">教练车</a><!-- /page// -->
+				     <a href="/liudongfuwuche/">流动服务车</a><!-- /page// -->
+				     <a href="/yangfengche/">养蜂车</a><!-- /page// -->
+			</div>
+		 </li>
+		 	  </ul>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 总体 -->
+<div class="nav">
+	  <a href="http://www.17350.com/" class="home">
+	  <img src="http://images.17350.com/images/m_icon00.png"></a>
+	  <a href="http://www.17350.com/product/" class="zhenche">
+	  <img src="http://images.17350.com/images/m_icon01.png"></a>
+	  <a href="http://wpa.qq.com/msgrd?V=1&amp;uin=1735095511&amp;Site=专汽网&amp;Menu=yes'" target="_blank">
+	  <img src="http://images.17350.com/images/m_icon02.png"></a>
+	  <a href="tel:18008665020" class="phone">
+	  <img src="http://images.17350.com/images/m_icon03.png"></a> 
+	  </div>
+
+
+</body>
+  <script>
+      </script>
+</html>

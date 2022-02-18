@@ -1,0 +1,327 @@
+
+/* ____________总体样式 */
+body {
+    position: relative;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
+    background: #f0f0f0;
+}
+ul, li,ol {
+    list-style: none;
+     padding: 0;
+}
+
+a {
+    color: #808080;
+}
+/* ____________总体样式结束 */
+
+/* ____________页头样式 */
+.phone_header {
+    height: 55px;
+    background: rgba(255,255,255,0.7);
+    top: 0;
+    width: 100%;
+    box-shadow: 0px 1px 6px #ffcfcf;
+}
+
+.phone_header_left {
+    float: left;
+    font-size: 1.5rem;
+    line-height: 55px;
+    padding-left: 1rem;
+}
+.phone_header_left span {
+    font-weight: bold;
+    left: 3em;
+        margin-left: 1rem;
+}
+
+    .phone_header_i{
+           margin-top: 1.2rem;
+               margin-left: 1rem;
+   				 font-size: 1rem;
+   			 padding: 0rem;
+            width: 1rem;
+            height: 1rem;
+            float:left;
+            border-top: 3px solid #b9b9b9; /*上面的线条*/
+            border-right: 3px solid #b9b9b9;/*右边线条*/
+            transform: rotate(230deg);/*主要是这个旋转45度*/
+        }
+
+/* __________________页头样式结束 */
+
+
+/* __________________分类样式 */
+.phone_type {
+    position: relative;
+    -webkit-transition: .3s all;
+    transition: .3s all;
+    margin-top: 0.2rem;
+    background: rgba(255,255,255,0.9);
+    overflow-x: scroll;
+}
+
+
+.phone_type_show {
+    height: 4.5rem;
+    word-break: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    line-height: 4.49rem;
+    padding: 0rem 1rem;
+    float:left;
+}
+
+.phone_type_show .on {
+    border-bottom: 1px solid #ff0000;
+}
+.phone_type_show li {
+    display: inline-block;
+    margin: 0rem 0.2rem;
+}
+
+.phone_type_show .on a {
+    color: #ff5252;
+    font-size: 1rem;
+}
+.phone_type_show a {
+    color: #888888;
+    line-height: 3rem;
+    font-size: 1rem;
+    border-radius: .5rem;
+    display: inline-block;
+    padding: 0rem 0.1rem;
+}
+
+/* 箭头 */
+    .phone_type_open{
+           margin-top: 1.2rem;
+               margin-right: 1rem;
+   				 font-size: 1rem;
+   			 padding: 0rem;
+            width: 1rem;
+            height: 1rem;
+            float:right;
+            border-top: 3px solid #b9b9b9; /*上面的线条*/
+            border-right: 3px solid #b9b9b9;/*右边线条*/
+            transform: rotate(135deg);/*主要是这个旋转45度*/
+        }
+
+/* 弹窗 */
+
+.phone_type_hide {
+ display: none; 
+/*      display: block;  */
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1090;
+   background: rgba(255,255,255,0.9);
+       color: #555555;
+    transform: translateX(0);
+    touch-action: pan-y; 
+    user-select: none; 
+    -webkit-user-drag: none; 
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+/* 内容 */
+
+.phone_type_hide_content {
+    padding: 2em 1em;
+    text-align: left;
+    margin-bottom: 4em;
+}
+.phone_type_hide_content ul {
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 2em!important;
+}
+.phone_type_hide_content a {
+    color: #313131;
+    font-size: 1.4em;
+    display: block;
+    padding: 0.5em 0em;
+    text-align: left!important;
+}
+
+.phone_type_hide_content ul li {
+    display: block;
+    width: auto;
+    padding: 0em 1.2em 0em 0em;
+     float:left;
+}
+
+
+.phone_type_hide_content ul li a {
+    font-size: 1.1em;
+    color: #777;
+    line-height: 2.4em;
+    padding: 0em;
+}
+
+/* 关闭标记 */
+.phone_type_hide_close {
+  margin-top: -0.2rem;
+    float: right;
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    opacity: 2;
+    position: absolute;
+    right: 1em;
+    top: 5em;
+}
+.phone_type_hide_close span {
+    display: inline-block;
+    width: 30px;
+    height: 4px;
+    background: #4F4F4F;
+    transform: rotate(45deg);
+    opacity: 2;
+}
+.phone_type_hide_close span::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 4px;
+    background: #272727;
+    transform: rotate(-90deg);
+}
+
+/* __________________分类样式结束 */
+
+
+/* __________________内容样式*/
+
+.phone_list {
+    width: 100%;
+    background: #f0f0f0;
+    padding-top: 0.4em;
+}
+.phone_list ul {
+    overflow: hidden;
+    padding-left: 0;
+}
+
+.phone_list ul li {
+    width: 49.4%;
+    display: inline-block;
+    background: #fff;
+    padding-bottom: 1em;
+    margin-bottom: 0.8em;
+    text-align: center;
+}
+
+
+
+.phone_list a {
+    font-size: 14px;
+    color: #121f45;
+    line-height: 18px;
+    padding-top: 0.5em;
+    padding-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+}
+
+.phone_list ul li img {
+    width: 100%;
+     -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 0;
+}
+
+/* __________________内容样式结束 */
+
+
+/* __________________点击继续加载 */
+/* 加载 */
+.phone_load {
+    background: #fff;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 2px 2px 0 0;
+    text-align: center;
+}
+.phone_load a:hover {
+    color: #ff2400;
+}
+
+
+
+/* __________________点击继续加载结束 */
+
+
+
+/* __________________意见 */
+.phone_on {
+      width: 100%;
+    background: #fff;
+    margin: 0.9em 0em;
+}
+.phone_on ul {
+    overflow: hidden;
+    padding: 1em 0em;
+}
+
+.phone_on ul li {
+    float: left;
+    width: 33%;
+    -webkit-box-flex: 1;
+    border-right: 0.1rem solid #ccc;
+    text-align: center;
+}
+.phone_on ul li a {
+    font-size: 1.6rem;
+}
+/* __________________意见结束 */
+
+/* __________________版权 */
+
+.phone_copyright {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 1em 0;
+    color: #999999;
+    padding-bottom: 5em;
+    font-size: 1.5rem;
+    margin: 5px 0;
+}
+/* __________________版权 */
+
+/* __________________最底部开始 */
+
+.phone_bottom {
+    min-width: 320px;
+    position: fixed;
+    height: auto;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0.9;
+    margin: 0 auto;
+    bottom: 0px;
+    z-index: 10000;
+    border-top: 1px solid #ccc;
+    box-shadow: 0 0 5px #ccc;
+}
+
+.phone_bottom a {
+    width: 25%;
+    max-height: 90px;
+    height: auto;
+    display: block;
+    float: left;
+}
+
+
+/* __________________最底部结束 */

@@ -1,0 +1,265 @@
+<!--  
+1.先用div画框架
+
+先写每个页面必须的。然后问问姐姐客户最想在每个页面看到什么
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 让网站不去请求favicon.ico图标 -->
+<link rel="icon" href="data:image/ico;base64,aWNv">
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+*{
+border:0px;
+margin: 0px;
+padding: 0px;
+}
+div{
+border:1px solid red;
+}
+html {
+	font-size: 16px;
+}
+/* 换行默认清除浮动，以防元素塌陷导致div出现问题 */
+br {
+	clear: both;
+}
+.module_title{
+	width:calc(100% - 1.2rem);
+	height:3rem;
+    background-color: #fff;
+    margin: 0.5rem auto;
+    box-shadow: 1px 1px 2px #ccc;
+    font-size: 18px;
+    font-color: #313131;
+    line-height: 3rem;
+    font-weight: 500;
+    padding-left:1rem;
+    border: 1px #e6e6e6 solid;
+}
+.news_title{
+padding-left:1rem;
+    font-size: 16px;
+    text-align: left;
+    line-height: 34px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+}
+
+
+/* 菜单的显示与隐藏 */
+.child{
+display: none;
+}
+.item:hover +.child{
+display: block;
+}
+
+.child:hover {
+display: block;
+}
+ 
+</style>
+
+   
+</head>
+ 
+
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:30rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">
+车型分类</div><!-- 模块标题结束 -->
+<!-- 车型分类 -->
+<div style="width:20%;height:26rem;float:left;">
+<div style="width:100%;height:3rem;float:left;">
+<div style="width:100%;height:100%;float:left;" class="item">环卫车</div>
+<div	 style="width:300%;height:500%; position: relative;
+  left: 100%;
+  top: 0;"  class="child">洒水车</div>
+</div>
+
+
+</div><!-- 车型分类 结束-->
+<!-- 广告 -->
+<div style="width:79.5%;height:26rem;float:left;">
+<img src=" material/automobile.jpg" style="width: 100%; height: 100%;">
+</div><!-- 广告结束 -->
+</div><!-- 车型与广告结束 -->
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:47rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">促销车辆</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:100%;height:41rem;">
+<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">
+<img src=" material/automobile.jpg" style="width: 20rem; height: 12rem;">
+<p>神风汽车</p>
+<p>底盘品牌：神风</p>
+<p>发动机马力：玉柴140马力</p>
+<p>驱动轴：全浮式半轴</p>
+<p>价格：13万</p>
+</div>
+
+<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">
+<img src=" material/automobile.jpg" style="width: 20rem; height: 12rem;">
+<p>神风汽车</p>
+<p>底盘品牌：神风</p>
+<p>发动机马力：玉柴140马力</p>
+<p>驱动轴：全浮式半轴</p>
+<p>价格：13万</p>
+</div>
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:47rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">配件</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:100%;height:41rem;">
+<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">
+<img src=" material/automobile.jpg" style="width: 20rem; height: 14rem;">
+<p>洒水车配件</p>
+<p>型号：铝合金后洒喷头</p>
+<p>尺寸：16寸</p>
+</div>
+
+<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">
+<img src=" material/automobile.jpg" style="width: 20rem; height: 14rem;">
+<p>洒水车配件</p>
+<p>型号：铝合金后洒喷头</p>
+<p>尺寸：16寸</p>
+</div>
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+
+
+
+
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:34rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">新闻</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:49.5%;height:10rem;float:left">
+<p class="news_title">程力集团捐款100万元用于“新型肺炎”防控02-15点赞！</p>
+<p class="news_title">程力汽车集团捐赠30吨医用酒精！02-15</p>
+<p class="news_title">北汽集团捐赠40辆图雅诺负压救护车正式发车湖北 现场再追加20辆02-15</p>
+</div>
+<div style="width:49.5%;height:10rem;float:left;">
+<p class="news_title">重卡销3951辆 轻卡销1.8万辆 江淮1月销量出炉02-15</p>
+<p class="news_title">疫情无情欧曼有情 定制“梦想卡车”创新客户服务模式 与卡友共渡难关02-15</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+</div>
+<div style="width:49.5%;height:10rem;float:left">
+<p class="news_title">程力集团捐款100万元用于“新型肺炎”防控02-15点赞！</p>
+<p class="news_title">程力汽车集团捐赠30吨医用酒精！02-15</p>
+<p class="news_title">北汽集团捐赠40辆图雅诺负压救护车正式发车湖北 现场再追加20辆02-15</p>
+</div>
+<div style="width:49.5%;height:10rem;float:left;">
+<p class="news_title">重卡销3951辆 轻卡销1.8万辆 江淮1月销量出炉02-15</p>
+<p class="news_title">疫情无情欧曼有情 定制“梦想卡车”创新客户服务模式 与卡友共渡难关02-15</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+</div>
+<div style="width:49.5%;height:10rem;float:left">
+<p class="news_title">程力集团捐款100万元用于“新型肺炎”防控02-15点赞！</p>
+<p class="news_title">程力汽车集团捐赠30吨医用酒精！02-15</p>
+<p class="news_title">北汽集团捐赠40辆图雅诺负压救护车正式发车湖北 现场再追加20辆02-15</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+</div>
+<div style="width:49.5%;height:10rem;float:left;">
+<p class="news_title">重卡销3951辆 轻卡销1.8万辆 江淮1月销量出炉02-15</p>
+<p class="news_title">疫情无情欧曼有情 定制“梦想卡车”创新客户服务模式 与卡友共渡难关02-15</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+<p class="news_title"> 依维柯S-Way斩获2020年iF设计奖02-13</p>
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+   
+    	zw.is_phone({phone:false}); 
+    	
+    	
+    	  get_type()
+          //根据区域获取服务站..分页
+          function get_type(){
+        	  
+        	  
+        	  var paramter={
+        	//		  title:document.getElementById("Inquire_title_input").value
+          		   }
+        	
+        	  var dataarr=zw.ajax({url:"../type_query",parameter:paramter}).data;
+        	  var service_content= document.getElementById('category');
+        	  
+        	 	let parent_arr=[]
+    		 	//先找出第一级别
+    		 	 for (var i in dataarr) {
+    		            if(dataarr[i].parentId==="0"){
+    		            	parent_arr.push(dataarr[i])
+    		            }
+    		        }
+    		 	//可以根据动态列创建map然后返回到map中。当前就这样
+    		 	
+    		 	//然后根据第一级别编写第二级别左边
+    		 	var html="";
+    		 	 for (var y in parent_arr) {
+    		 		 
+    		 		html+=''
+    	    			+' <div class="category_content">'
+    	    		    +'  <div class="category_content_big"><a href="javascript:onclick=show(\''+parent_arr[y].id+'\') ">'+parent_arr[y].title+'</a></div>'
+    				 +' <ul>'
+    		 		 for (var u in dataarr) {
+    		 			 if(dataarr[u].parentId===parent_arr[y].id){
+    		 				html+= '<li class="category_content_small">'
+    						 +' <a href="javascript:onclick=show(\''+dataarr[u].id+'\') " target="_blank"> '+dataarr[u].title+'</a>'
+    								+' </li>';
+    			            }
+    		 		}
+    		 		html+='</ul></div>'
+    		 		
+    		 	}
+        	  
+    		 	service_content.innerHTML=html;
+        	  
+        	  
+          }
+    	
+    	
+    	
+      
+      </script>
+</body>
+</html>

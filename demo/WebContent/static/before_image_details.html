@@ -1,0 +1,165 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>惠购专用车网，省钱-省时-省心</title>
+<script src="zw.js"></script>
+<style type="text/css">
+*{
+border:0px;
+margin: 0px;
+padding: 0px;
+}
+div{
+border:0px solid red;
+}
+
+.image_details_title{
+width:1200px;
+height:50px;line-height:50px;
+border-bottom:1px solid #ccc;
+margin-bottom:20px !important;
+margin:0 auto 0 auto;
+}
+
+.image_details_title span {width:200px;margin:0 auto;font-size:18px;color:#313131;}
+.image_details_title h1 {width: auto;margin:0 auto;font-size:18px;color:#313131;text-align: center;}
+
+
+#image_details_img {position: relative;}
+#image_details_img .pre {position: absolute;width: 10%;height: 100%;display: block;left: 0;background: url(http://images.17350.com/images/sprite.png) no-repeat left center;opacity:0.3;
+filter:alpha(opacity=30);margin-left:5px;}
+#image_details_img .next {position: absolute;width: 10%;height: 100%;display: block;right: 0;background: url(http://images.17350.com/images/sprite1.png) no-repeat right center;opacity:0.3;
+
+
+
+</style>
+<link rel="stylesheet"  href="zw.css"/>
+</head>
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+
+
+
+<div class="image_details_title" id="guding"><h1 id="image_title"></h1></div>
+        <div class="category" >
+
+		     <div class="category_content" >
+			     <ul  id="image_type">
+			     <li class="category_content_small">
+							<a href="/sashuiche/" target="_blank" style="font-size:1.2rem;"> 分类：</a>
+					</li>
+					
+				 </ul>
+	  </div>
+	 </div>
+	 
+	 
+	 <div id="image_content">        
+          
+       </div>
+       
+	 
+	 
+	 
+	 
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+   
+      
+      function getQueryString(name) {
+    	  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    	  var r = window.location.search.substr(1).match(reg);
+    	  if (r != null) {
+    	  return unescape(r[2]);
+    	  }
+    	  return null;
+    	  }
+      
+      get_data()
+    	  //获取信息
+      function get_data(){
+    	  
+    	 var paramter={
+    		  id:getQueryString('id')
+    	  }
+    	  var dataarr=zw.ajax({url:"../image_query",parameter:paramter}).data;
+     
+    	 
+    	  
+    	  var image_title= document.getElementById('image_title');
+    	  image_title.innerHTML=dataarr[0].title;
+    	  
+ 
+    	  
+    	  console.log(dataarr[0])
+           content_for("exterior","外观",dataarr)
+    	    content_for("cab","驾驶室",dataarr)
+    	    content_for("ite","底盘",dataarr)
+    	    content_for("tops","上装",dataarr)
+    	  hide_and_show("exterior0")
+//     	  var image_type= document.getElementById('image_type');
+//     	  image_type.innerHTML="";
+    	  
+    	  
+    	  
+//     	  var update_time= document.getElementById('update_time');
+//     	  update_time.innerHTML="时间："+dataarr[0].update_time;
+    	  
+//     	  var ctr= document.getElementById('ctr');
+//     	  ctr.innerHTML=dataarr[0].ctr;
+    	  
+//     	  var content= document.getElementById('content');
+//     	  content.innerHTML=decodeURIComponent(dataarr[0].content);
+    	  
+         
+    	  
+    	  
+      }
+      
+      
+      function hide_and_show(id){
+    	  
+    	  var name_arr = document.getElementsByName("image_arr");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        		  name_arr[i].style.display='none';  //隐藏所有
+	        }
+    	  
+    	  document.getElementById(id).style='display: block;'
+    	  
+      }
+      
+   function content_for(attributes,name,dataarr){
+   	  var image_type= document.getElementById('image_type');
+    	  
+    	  var image_content= document.getElementById('image_content');  
+	   
+		  var arr=decodeURIComponent(dataarr[0][attributes]).split("||")
+			for(let i=0;i<arr.length-1;i++){
+				image_type.innerHTML += '<li class="category_content_small"><a onclick=hide_and_show(\''+attributes+''+i+'\')  style="cursor: pointer;"> '+name+''+(i+1)+'</a></li>'				
+				
+				image_content.innerHTML +='<div name="image_arr" id="'+attributes+''+i+'" style=" display: none; ">'+arr[i]+'</div>';
+			}
+    	  
+      }
+      
+      
+      
+      </script>
+
+
+
+</div>
+</body>
+</html>

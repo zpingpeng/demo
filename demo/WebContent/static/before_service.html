@@ -1,0 +1,192 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+*{
+border:0px;
+margin: 0px;
+padding: 0px;
+}
+div{
+border:0px solid red;
+}
+
+
+
+
+</style>
+</head>
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+
+<div class="container_1200 m_center cf">
+  <div class="service_title"  id="service_title">
+  </div>
+
+<!--底盘筛选!-->
+<div class="category" >
+
+	     <ul class=" category_title"   >
+		     <li class="category_title_selected" ><a href="/product/">底盘品牌</a></li>
+		 </ul>
+		 
+		     <div class="category_content">
+			     <ul id="category_content_ul">
+				 </ul>
+	  </div>
+	 </div>
+	 
+<!--列表!-->
+<div class="service_content">
+     <div class="service_content_title service_content_title_left">
+	     <span class="service_content_title_left">服务站名称</span>
+		 <span class="service_content_title_right">所在区域</span>
+	 </div>
+	 <div class="service_content_title service_content_title_right">
+	     <span class="service_content_title_left">服务站名称</span>
+		 <span class="service_content_title_right">所在区域</span>
+	 </div>
+	 <ul id="service_content">
+				 </ul>
+	 <!--翻页!-->
+
+
+
+
+</div>
+<div class="center" id="pagination"><div class="center"><ul class="pagination"><li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:1});">首页</a></li><li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:1});">«</a></li> <li><a href="#" class="active" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:1});">1</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:2});">2</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:3});">3</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:4});">4</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:5});">5</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:6});">6</a></li> <li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:7});">7</a></li><li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:2});">»</a></li><li><a href="#" onclick=" createPagination({&quot;id&quot;:&quot;pagination&quot;,&quot;total&quot;:100,&quot;rows&quot;:10,&quot;current&quot;:10});">末页</a></li><li> <a>总页数:10</a></li></ul></div></div>
+
+</div>
+<br/>
+<br/>
+<br/>
+</div>
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;margin-top: 8rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+     //默认地盘
+     var region=""
+     //默认区域
+      var site_title=""
+      
+      //获取区域
+      get_region()
+      function get_region(){
+    		var parameter={
+					sql_type:"select",
+			        sql_table:"service", 
+			        site_title:site_title
+				  ,region:region
+			};
+  	  
+  	                 var dataarr=zw.ajax({url:"../total",type:"post",parameter:parameter});
+    		    	  var service_content= document.getElementById('service_title');
+    		    	  service_content.innerHTML='';
+    		    	  region=dataarr.data[0].region;
+    		    	  for(var i=0;i<dataarr.data.length;i++){
+    		    		service_content.innerHTML +=''
+    		    		+'	<dl>	  '	 
+    		    	    +'	<dt style="background-color: rgb(62, 78, 90);">'
+    		    	  + '<a onclick="get_service(\''+dataarr.data[i].region+'\',undefined)" style="color: #fff;">'+dataarr.data[i].region+'</a></dt>'
+    		    	     +'	</dl>';
+    		    	  }
+    		    	  
+    	  
+      }
+      //获取品牌
+      get_brand()
+      function get_brand(){
+    
+    		var parameter={
+					sql_type:"select",
+			        sql_table:"service",
+  				    region:region
+			};
+    	  
+    	  var dataarr=zw.ajax({url:"../total",type:"post",parameter:parameter});
+    		    	  
+    		    	  var service_content= document.getElementById('category_content_ul');
+    		    	  service_content.innerHTML='';
+    		    	  	service_content.innerHTML +=' <li class="category_content_small">'
+    		    			+'<a  onclick="get_service(undefined,\'\')"   style="cursor:pointer">不限</a>'
+							+'</li>';
+    		    	  for(var i=0;i<dataarr.length;i++){
+    		    		  console.log(dataarr[i])
+    		    		service_content.innerHTML +=' <li class="category_content_small">'
+    		    			+'<a  onclick="get_service(undefined,\''+dataarr[i].title+'\')"  style="cursor:pointer" >'+dataarr[i].title+'</a>'
+							+'</li>';
+    		    	  }
+    		    	  
+    	  
+      }
+      get_service()
+      //根据区域获取服务站..分页
+      function get_service(param_region,param_site_title){
+    	  if(param_site_title!==undefined){
+    		  site_title= param_site_title
+    	  }
+    	  if(param_region!==undefined){
+    		  region= param_region
+    	  }
+    	  
+  		var parameter={
+					sql_type:"select",
+			        sql_table:"service", 
+  				   region:region
+			};
+    	  
+    	  var dataarr=zw.ajax({url:"../total",type:"post",parameter:parameter});
+    	  
+//     	  var dataarr=zw.ajax({url:"../service_query",parameter:paramter});
+    	  
+         //分页器
+          zw.create_pagination({id:"pagination",total:dataarr.line,rows:10,current:1,content: function(current ){  
+            parameter.current=""+(current||1);
+    	        var dataarr=zw.ajax({url:"../total",type:"post",parameter:parameter});
+        			  var service_content= document.getElementById('service_content');
+        	    	  service_content.innerHTML='';
+        	    	  for(var i=0;i<dataarr.data.length;i++){
+        	    		service_content.innerHTML +='<li>'
+        	    		+'<div class="service_content_all">'
+        	    		+'<div class="service_content_all_left">'
+        	    		+'	 <a  target="_blank" class="showDiv"><span>'+dataarr.data[i].title+'</span></a>'
+        	    		+'	 <div class="text">'
+        	    	    +'	<span>地址：</span><p>'+dataarr.data[i].address+'</p>'
+        	    		+'	<span>电话：</span><p>'+dataarr.data[i].phone+'</p>'
+        	    	    +'		 </div>'
+        	    		+'		 </div>'
+        	    		+'		 <div class="service_content_all_right">'
+        	    		+'		     <p>'+dataarr.data[i].region+'</p>'
+        	  		    +' </div>'
+        	  			+'	 </div>'
+        	  		    +'	 </li> ';
+        	    	  }
+        	    	  
+       		    }
+          })
+    	  
+    	  
+      }
+      
+      
+      
+      
+      
+      
+      </script>
+</body>
+</html>

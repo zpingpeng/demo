@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<!-- 让网站不去请求favicon.ico图标 -->
+<link rel="icon" href="data:image/ico;base64,aWNv">
+<title>惠购专用车网，省钱-省时-省心</title>
+<script src="zw.js"></script>
+<style type="text/css">
+
+
+</style>
+</head>
+<body >
+
+<!--  ——————————————————页头——————————   -->
+  <div class="phone_header">
+      <div class="phone_header_left">
+			<div class="phone_header_i" onclick="javascript:history.back(-1);"></div>
+		  	 <span>新闻中心</span>
+       </div>
+  </div>
+  <!--  ——————————————————页头结束——————————   -->
+  
+  
+   <!--  ——————————————————分类——————————   -->
+ <div class="phone_type">
+<!--  显示得分类 -->
+      <ul class="phone_type_show"  id="phone_type_show">  </ul>
+<!--       总分类开关 -->
+              <div class="phone_type_open" onclick="hide_and_show('block')"></div>
+              
+<!--               窗口 -->
+       <div id="phone_type_hide" class="phone_type_hide" >
+       
+<!--        总分类 -->
+		<div class="phone_type_hide_content" id="phone_type_hide_content">	  </div>
+		        
+<!-- 		        关闭键 -->
+			  <div id="phone_type_hide_close"  class="phone_type_hide_close" onclick="hide_and_show('none')"><span ></span></div>
+</div><!--   窗口关闭 -->
+              
+  </div>
+ <!--  ——————————————————分类结束——————————   -->
+
+
+
+
+
+
+
+
+
+
+ <!--  ——————————————————汽车列表开始——————————   -->
+<div  class="phone_list">
+  <ul id="phone_list_content"></ul>
+</div>
+ <!--  ——————————————————汽车列表结束——————————   -->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="phone_load"><a href="javascript:void(0)" onclick="getjosn(0)">点击继续加载</a></div>
+
+
+
+
+<div class="phone_on">
+    <ul>
+       <li><a href="javascript:void(0)">关于专汽网</a></li>
+       <li><a href="javascript:void(0)">文章中心</a></li>
+       <li><a href="javascript:void(0)">意见反馈</a></li>
+    </ul>
+</div>
+
+
+
+
+
+    <div class="phone_copyright">
+        <p>Copyright © 2014-2017 All Rights Reserved.</p>
+        <p> 湖北专汽网科技有限公司 版权所有</p>
+    </div>
+
+
+
+
+
+
+
+
+
+<div class="phone_bottom">
+	  <a href="http://www.17350.com/" class="home">
+	  <img src="http://images.17350.com/images/m_icon00.png"></a>
+	  <a href="http://www.17350.com/product/" class="zhenche">
+	  <img src="http://images.17350.com/images/m_icon01.png"></a>
+	  <a href="http://wpa.qq.com/msgrd?V=1&amp;uin=1735095511&amp;Site=专汽网&amp;Menu=yes'" target="_blank">
+	  <img src="http://images.17350.com/images/m_icon02.png"></a>
+	  <a href="tel:18008665020" class="phone">
+	  <img src="http://images.17350.com/images/m_icon03.png"></a> 
+	  </div>
+
+
+
+
+
+</body>
+  <script>
+  
+  
+  function hide_and_show(value){
+	  
+  	document.getElementById('phone_type_hide').style.display=value
+  }
+  
+  
+  
+  get_type()
+  //根据区域获取服务站..分页
+  function get_type(){
+	  var dataarr=zw.ajax({url:"../type_query",parameter:{}}).data;
+	  var phone_type_hide_content= document.getElementById('phone_type_hide_content');
+	  var phone_type_show=document.getElementById('phone_type_show');
+	  var phone_type_show_html='<li class="on" id="phone_type_show_on_-1" name="phone_type_show_on"><a href="javascript:onclick=get_content(\'\',\'-1\') "><span>全部</span></a></li>';
+	  var phone_type_hide_content_html="";
+
+	 	let parent_arr=[]
+	 	//先找出第一级别.顺便加载第一级别
+	 	 for (var i in dataarr) {
+	            if(dataarr[i].parentId==="0"){
+	            	parent_arr.push(dataarr[i])
+	            	phone_type_show_html +='<li id="phone_type_show_on_'+i+'"  name="phone_type_show_on"><a href="javascript:onclick=get_content(\''+dataarr[i].title+'\','+i+') "><span>'+dataarr[i].title+'</span></a> </li>';
+	            }
+	        }
+	 	//可以根据动态列创建map然后返回到map中。当前就这样
+	 	
+	 	//然后根据第一级别编写第二级别左边
+	 	 for (var y in parent_arr) {
+	 		 
+	 		 
+	 		phone_type_hide_content_html+=''
+    			+'  <a href="javascript:onclick=get_content(\''+parent_arr[y].title+'\') ">'+parent_arr[y].title+'</a>'
+			 +' <ul>'
+	 		 for (var u in dataarr) {
+	 			 if(dataarr[u].parentId===parent_arr[y].id){
+	 				phone_type_hide_content_html+= '<li><a href="javascript:onclick=get_content(\''+dataarr[u].title+'\') "> '+dataarr[u].title+'</a></li>';
+		            }
+	 		}
+			 phone_type_hide_content_html+='</ul><br/>'
+	 		
+	 	}
+	  
+	 	phone_type_hide_content.innerHTML=phone_type_hide_content_html;
+	 	phone_type_show.innerHTML=phone_type_show_html;
+	  
+  }
+  
+  
+  var type="";
+  var current=1;
+  get_content()
+  //根据区域获取服务站..分页
+  function get_content(param_type,numeral){
+	  hide_and_show('none')
+	  
+	  //确认汽车类型
+	  if(param_type!==undefined){
+		  type= param_type
+	  }
+	  //改变class
+	  if(numeral!==undefined){
+		  console.log(numeral)
+		  var name_arr = document.getElementsByName("phone_type_show_on");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        	name_arr[i].className=name_arr[i].className.replace('on',"")
+	        }
+	        //添加样式
+	    	  var dom_class = document.getElementById("phone_type_show_on_"+numeral).className;
+	      	dom_class = dom_class.concat('on');
+	      	document.getElementById("phone_type_show_on_"+numeral).className = dom_class;
+	        
+	  }
+	  
+    			  //请求服务
+    			  	  var paramter={
+    			  			related_car_type:type,
+	     	                 current:(current||1)
+  	     	   }
+   				  var dataarr=zw.ajax({url:"../parts_query",parameter:paramter}).data; 
+    		//编辑数据
+    			  var phone_list_content= document.getElementById('phone_list_content');
+    			var   phone_list_content_html="";
+    			  
+    			  
+    			  for(var i=0;i<dataarr.length;i++){
+    	    		 
+    	    		phone_list_content_html +=''
+    	    			+'   <li>'
+    	    			+'    <a href="./phone_car_details.html?id='+dataarr[i].id+'">'+decodeURIComponent(dataarr[i].image).replace("||","")+'</a>'
+    	    			+'     <a  href="./phone_car_details.html?id='+dataarr[i].id+'">'+dataarr[i].title+'</a>'
+    		        +'    </li>';
+    	    	  }
+    			  phone_list_content.innerHTML=phone_list_content_html;
+	  
+	  
+  }
+  
+  
+  
+  
+  
+      </script>
+</html>

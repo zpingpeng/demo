@@ -1,0 +1,281 @@
+<!--  
+1.先用div画框架
+
+ 与当前页面关系不大的跳新页面。。其余交互最好弹窗，除非信息量过于复杂
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+<script src="zw.js"></script>
+</head>
+<style type="text/css">
+#table a{
+font-size: 1rem;
+	color: #000000;
+	text-decoration: none;
+	}
+	#table a:hover{
+	font-size:1rem;
+	color: #ff0000;
+	}
+	#table li{
+	border-bottom:1px solid #000;
+		padding-top:5px;
+		padding-left:1rem;
+	}
+	#table ul{
+	border-bottom:1px solid #000;
+	padding-top:5px;
+	}
+	.no_circle{list-style:none;
+	display:none;
+	}
+
+</style>
+<!--import引入-->
+<body >
+		<div id="rear_head" ></div>
+  <script>
+  	 document.getElementById("rear_head").innerHTML = '<object type="text/html" data="rear_head.html" style="width:100%;height:3rem;overflow:hidden;"></object>';
+</script>
+		<!-- 下面左边结束 -->
+		
+		
+		
+		<!-- 下面左边 -->
+		<div class="rear_left">
+		
+		 </div>
+		
+		<!-- 下面右边 -->
+		<div class="rear_right">
+		<div id="tree"></div>
+		<div id="Inquire_add"></div>
+		<hr/>
+		 <div id="table">
+		 </div>
+		
+		</div>
+		<!-- 下面右边结束 -->
+	          
+<div id="synchronous_div"  style="display:none">
+<input type="hidden" name="id" id="synchronous_id">
+<div id="title"  style="overflow: auto;"></div>
+<div id="parentId" style="overflow: auto;"></div>
+<div id="sort"  style="overflow: auto;"></div>
+<div id="synchronous_submit" ></div>
+</div>
+	
+	<script type="text/javascript">
+	
+	
+	var data_type=zw.ajax({url:"../site_query_title",type:"post",parameter:{}}).data;
+	var data_arr=[{text:"父类",value:0}]
+	for(var i in data_type){
+		var arr={
+					text:data_type[i].title,
+					value:data_type[i].id
+					}
+		data_arr.push(arr)
+		}
+	
+	
+	
+	
+	
+	zw.create_input({id:"title",label:"类别名"});
+	zw.create_select({id:"parentId",label:"父类",data:data_arr});
+	
+	zw.create_input({id:"sort",label:"排序"});
+	
+	
+	//新增
+	zw.create_buttom({id:"Inquire_add",label:"新增",onclick: function( ){   	
+	zw.create_popups({id:"synchronous_div",title:"信息维护",style:"width:22rem;height:17rem;"});
+	 zw.create_buttom({id:"synchronous_submit",label:"确定",style:"margin-left: 7rem;",onclick: function( ){  
+		synchronous_submit();
+		}});
+	}});
+	
+	//删除
+	function remove(object) {
+	    let id=JSON.parse(object).id;
+	     var msg = "确认删除 ？";
+	        if (confirm(msg)==true){
+	        	var paramter={
+	        			id:id
+	        	}
+	      	  var re=zw.ajax({url:"../site_remove",type:"post",parameter:paramter});
+	        	list =  zw.ajax({url:"../site_query",type:"post",parameter:{}}).data;
+				 create_tree_table({cols:table_cols,data:list,id:"table"});//刷新表格
+			}
+	}
+	//修改
+	function modify(object) {
+		
+			//弹出框
+		   zw.create_popups({id:"synchronous_div",title:"用户信息维护",style:"width:22rem;height:17rem;"});
+		   	//弹出框确定按钮
+		    zw.create_buttom({id:"synchronous_submit",label:"确定",style:"margin-left: 7rem;",onclick: function( ){  
+		   	synchronous_submit();
+		   	}});
+		    let data=JSON.parse(object)
+		    document.getElementById("synchronous_id").value=data.id
+			document.getElementById("title_input").value=data.title
+			document.getElementById("parentId_select").value=data.parentId
+			document.getElementById("sort_input").value=data.sort
+	}
+
+
+
+
+	//更新或者新增请求服务端
+	function synchronous_submit() {
+		
+		
+		var parameter={
+				id:document.getElementById("synchronous_id").value,
+				title:document.getElementById("title_input").value,
+				parentId:document.getElementById("parentId_select").value,
+				sort:document.getElementById("sort_input").value
+		}
+			  var dataarr=zw.ajax({url:"../site_synchronous",type:"post",parameter:parameter});
+			alert(dataarr.message)
+			list =  zw.ajax({url:"../site_query",type:"post",parameter:{}}).data;
+			 create_tree_table({cols:table_cols,data:list,id:"table"});//刷新表格
+			document.getElementById("close").onclick();//关闭弹窗
+	}
+	
+	
+	
+	
+	
+	
+	var list =  zw.ajax({url:"../site_query",type:"post",parameter:{}}).data;
+	
+	
+	
+	var table_cols=[
+	  	          {field:"title",title:"标题"},
+	  	          {field:"sort",title:"排序"},
+	  	          {field:"remove",onclick:"remove"},
+	  	          {field:"modify",onclick:"modify"}
+	  	          ]
+	
+	//1.首先转换为树型结构
+    create_tree_table({cols:table_cols,data:list,id:"table"});
+	//2.创建表格
+		function create_tree_table(object) {
+				let data=object.data;
+				let cols=object.cols;
+				let id=object.id;
+	 		let element = document.getElementById(id);
+		 	var html_title="<div style=\"float:left;width:10rem;border: 1px #e6e6e6 solid;\"><p>名称</p>";
+		 	var html_content="<div style=\"float:left;width:10rem;border: 1px #e6e6e6 solid;\"><p>排序</p>";
+			var html_remove="<div style=\"float:left;width:10rem;border: 1px #e6e6e6 solid;\"><p>删除</p>";
+		 	var html_modify="<div style=\"float:left;width:10rem;border: 1px #e6e6e6 solid;\"><p>修改</p>";
+		 	
+		 	
+		 	let parent_arr=[]
+		 	//先找出第一级别
+		 	 for (var i in data) {
+		            if(data[i].parentId==="0"){
+		            	parent_arr.push(data[i])
+		            }
+		        }
+		 	//可以根据动态列创建map然后返回到map中。当前就这样
+		 	
+		 	//然后根据第一级别编写第二级别左边
+		 	 for (var y in parent_arr) {
+		 		 
+		 		html_title+='<ul><a href="javascript:onclick=show(\''+parent_arr[y].id+'\') ">+'+parent_arr[y].title+'</a></ul>'
+		 		+'<ul name="'+parent_arr[y].id+'" class="no_circle" style="display: block;">'
+		 		 for (var u in data) {
+		 			 if(data[u].parentId===parent_arr[y].id){
+		 				html_title+='<li>'+data[u].title+'</li>'
+			            }
+		 		}
+		 		html_title+='</ul>'
+		 		
+		 		
+		 	}
+		 	//编写第二级别右边
+		 	 for (var j in parent_arr) {
+		 		html_content+='<ul><a href="javascript:onclick=show(\''+parent_arr[j].id+'\') ">'+parent_arr[j].sort+'</a></ul>'
+		 		+'<ul name="'+parent_arr[j].id+'" class="no_circle" style="display: block;">'
+		 		 for (var k in data) {
+		 			 if(data[k].parentId===parent_arr[j].id){
+		 				html_content+='<li>'+data[k].sort+'</li>'
+			            }
+		 		}
+		 		html_content+='</ul>'
+		 	}
+		 	
+		 	
+		 	
+		  	//编写删除右边
+		 	 for (var j in parent_arr) {
+		 		 let json=JSON.stringify(data[j]).replace(/\"/g,'\\"')
+ 				 json=json.replace(" ",'&nbsp;')
+		 		 
+		 		html_remove+='<ul><a onclick=modify(\''+json+'\') >删除</a></ul>'
+		 		+'<ul name="'+parent_arr[j].id+'" class="no_circle" style="display: block;">'
+		 		 for (var k in data) {
+		 			 if(data[k].parentId===parent_arr[j].id){
+		 				 let json=JSON.stringify(data[k]).replace(/\"/g,'\\"')
+		 				 json=json.replace(" ",'&nbsp;')
+		 				html_remove+='<li onclick=remove(\''+json+'\')>删除</li>'
+			            }
+		 		}
+		 		html_remove+='</ul>'
+		 	}
+		   	//编写修改右边
+		 	 for (var j in parent_arr) {
+		 		 let json=JSON.stringify(data[j]).replace(/\"/g,'\\"')
+ 				 json=json.replace(" ",'&nbsp;')
+		 		 
+		 		html_modify+='<ul><a onclick=remove(\''+json+'\') >修改</a></ul>'
+		 		+'<ul name="'+parent_arr[j].id+'" class="no_circle" style="display: block;">'
+		 		 for (var k in data) {
+		 			 if(data[k].parentId===parent_arr[j].id){
+		 				   json=JSON.stringify(data[k]).replace(/\"/g,'\\"')
+		 				 json=json.replace(" ",'&nbsp;')
+		 				html_modify+='<li onclick=modify(\''+json+'\')>修改</li>'
+		 				
+			            }
+		 		}
+		 		html_modify+='</ul>'
+		 	}
+		 	
+		 	
+		 	
+		 	html_title+="</div>"
+		 		html_content+="</div>"
+		 			html_remove+="</div>"
+		 				html_modify+="</div>"
+		 			
+			element.innerHTML = html_title+html_content+html_remove+html_modify; 
+			
+			}
+	
+		  function show(name){
+			  var name_arr = document.getElementsByName(name);
+		        for(var i = 0; i < name_arr.length; i++) {
+		        	  if(name_arr[i].style.display=='block'){
+		        		  name_arr[i].style.display='none';  //触动的层如果处于显示状态，即隐藏
+						  }
+						  else{
+						   name_arr[i].style.display='block';  //触动的层如果处于隐藏状态，即显示
+						}
+		      
+		        }
+			  
+			  }
+	
+</script>
+</body>
+</html>

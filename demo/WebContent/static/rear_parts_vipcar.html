@@ -1,0 +1,181 @@
+<!--  
+1.先用div画框架
+
+ 与当前页面关系不大的跳新页面。。其余交互最好弹窗，除非信息量过于复杂
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+<script src="zw.js"></script>
+</head>
+<style type="text/css">
+.rich_text {
+    width: 90%;
+    height: 15rem;
+    overflow-x: hidden;
+    border: 1px solid #ccc;
+    margin: 1rem;
+}
+
+</style>
+<!--import引入-->
+<body >
+		<div id="rear_head" ></div>
+  <script>
+  	 document.getElementById("rear_head").innerHTML = '<object type="text/html" data="rear_head.html" style="width:100%;height:3rem;overflow:hidden;"></object>';
+</script>
+		<!-- 下面左边结束 -->
+		<div id="rear_right"  style=" float: left;margin-top: -0.3rem;    height: calc(100% - 3.1rem);"></div>
+  <script>
+  	 document.getElementById("rear_right").innerHTML = '<object type="text/html" data="rear_right.html" style="width:15rem;height:100%;overflow:hidden;"></object>';
+</script>
+		
+		
+		<!-- 下面左边 -->
+		<div class="rear_left">
+		
+		<div id="Inquire_title"  ></div>
+		<br/>
+		<div id="Inquire_submit" style="margin-left:3rem;"></div>
+		
+		 </div>
+		
+		
+		<!-- 下面右边 -->
+		<div class="rear_right">
+		<div id="Inquire_add">
+		</div>
+		<hr/>
+		<div id="table" style="width: 100%;"></div>
+		<div class="center" id="pagination"></div>
+		</div>
+		<!-- 下面右边结束 -->
+	          
+<div id="synchronous_div"  style="display:none">
+<input type="hidden" name="id" id="synchronous_div_id" >
+</div>
+	
+	<script type="text/javascript">
+	//大类
+	var all_name="accessory_special";
+	//搜索
+	zw.create_input({id:"Inquire_title",label:"标题"});
+	 zw.create_buttom({id:"Inquire_submit",label:"查询",onclick: function( ){  inquire(); }});
+	
+	var drelated_car_type_data=zw.get_drelated_car_type_data();
+	var drelated_car_site_data=zw.get_drelated_car_site_data();
+	var recommend_data=zw.get_recommend_data();
+	var get_engin_data=zw.get_engin_data();
+	var get_gearbox_data=zw.get_gearbox_data();
+	
+	//创建增删改查框
+	var object_component={
+	port:all_name,
+	div_name:"synchronous_div",
+	insert_id:"Inquire_add",
+	sql_type:"",
+	sql_table:all_name,
+	 data:[
+    {name:"title", label:"标题", type:"input" },
+    {name:"sort", label:"顺序", type:"input" },
+    {name:"price", label:"价格", type:"input" },
+    {name:"horsepower", label:"马力", type:"input" },
+    {name:"image", label:"标题图", type:"file_image" },
+    {name:"images", label:"介绍图", type:"file_image" },
+    {name:"related_car_type", label:"关联车型", type:"select",data:drelated_car_type_data },
+    {name:"related_car_site", label:"关联底盘", type:"select",data:drelated_car_site_data},
+    {name:"engin", label:"发动机", type:"select",data:get_engin_data},
+    {name:"gearbox", label:"变速箱", type:"select",data:get_gearbox_data},
+    {name:"synchronous_checkbox", label:"推荐位", type:"recommend_checkbox",data:recommend_data},
+    {name:"introduction", label:"商品简介", type:"rich_text" },
+    {name:"parameter", label:"具体参数", type:"rich_text" },
+    ]
+	};
+	
+	var object_table={
+			port:all_name,
+			sql_type:"select",
+			sql_table:all_name,
+			div_name:"table",
+select_component:[
+              {id:"Inquire_title",type:"input",name:"title"}
+              ],
+table_cols:[
+            {field:"title",title:"标题"},
+	          {field:"sort",title:"顺序"},
+	          {field:"price",title:"价格"},
+	         {field:"horsepower",title:"马力"},
+	          {field:"update_people",title:"上传日期"},
+	          {field:"update_time",title:"上传人"},
+	          {field:"remove",onclick:"remove"},
+	          {field:"modify",onclick:"modify"}
+	          ]
+};//表格
+
+inquire();
+	
+	//1.点击查询
+	function inquire(type,id){
+		if(type!==undefined){
+			inquire_type=type;
+		}
+		if(id!==undefined){
+			inquire_id=id;
+		}
+		zw.execute_component(object_component) //创建窗口组件
+		zw.execute_table(object_table)//创建表格
+		zw.execute_insert(object_component)//新增
+	}
+	
+	
+
+	
+function remove(object) {
+let ob=JSON.parse(object);
+object_component.sql_type="remove";
+ob.object_component=object_component;
+zw.execute_remove(ob);
+zw.execute_table(object_table);
+}
+
+function modify(object) {
+let ob=JSON.parse(object);
+
+ob.object_component=object_component;
+zw.execute_modify(ob);
+zw.execute_table(object_table);
+}
+function synchronous_submit() {
+	
+	let str=document.getElementById("introduction_rich_text").innerHTML;
+	var imgUrlFun = function(str){
+		  var data = '';
+		   str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
+		     data = capture;
+		   });
+		  return data
+		 }
+	//标题图
+	let customize=[{name:"image",value:encodeURIComponent(imgUrlFun(str))}];
+	object_component.customize=customize;
+object_component.sql_type="synchronous";
+zw.execute_submit(object_component)
+zw.execute_table(object_table);
+}
+	
+
+</script>
+</body>
+</html>
+	          
+
+
+
+
+
+
+

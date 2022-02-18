@@ -1,0 +1,275 @@
+<!--  
+1.先用div画框架
+
+ 与当前页面关系不大的跳新页面。。其余交互最好弹窗，除非信息量过于复杂
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+<script src="zw.js"></script>
+</head>
+<style type="text/css">
+
+
+</style>
+<!--import引入-->
+<body >
+		<div id="rear_head" ></div>
+  <script>
+  	 document.getElementById("rear_head").innerHTML = '<object type="text/html" data="rear_head.html" style="width:100%;height:3rem;overflow:hidden;"></object>';
+</script>
+		<!-- 下面左边结束 -->
+		<div id="rear_right"  style=" float: left;margin-top: -0.3rem;    height: calc(100% - 3.1rem);"></div>
+  <script>
+  	 document.getElementById("rear_right").innerHTML = '<object type="text/html" data="rear_right.html" style="width:15rem;height:100%;overflow:hidden;"></object>';
+</script>
+		
+		
+		<!-- 下面左边 -->
+		<div class="rear_left">
+		
+		<div id="Inquire_name"  ></div>
+		<br/>
+		<div id="Inquire_submit" style="margin-left:3rem;"></div>
+		
+		 </div>
+		
+		
+		
+		<!-- 下面左边 结束
+		
+		<table>
+				<tr>
+					<td><div class="box_modify"></div></td>
+					<td><div class="box_disable"></div></td>
+				</tr>
+			</table>
+		
+		-->
+		<!-- 下面右边 -->
+		<div class="rear_right">
+		<div id="Inquire_add"></div>
+		<hr/>
+		<div id="table" style="width: 100%;"></div>
+		<div class="center" id="pagination"></div>
+		</div>
+		<!-- 下面右边结束 -->
+
+<div id="synchronous_div"  style="display:none">
+<input type="hidden" name="id" id="synchronous_div_id" >
+</div>	          
+<!-- <div id="synchronous_div"  style="display:none"> -->
+<!-- <input type="hidden" name="id" id="synchronous_id"> -->
+<!-- <div id="title" ></div> -->
+<!-- <div id="address" ></div> -->
+<!-- <div id="phone" ></div> -->
+<!-- <div id="region" ></div> -->
+<!-- <div id="chassis_brand" ></div> -->
+<!-- <div id="synchronous_submit"  style="float:left;"> </div> -->
+<!-- <div id="synchronous_remove"  style="float:left;"></div> -->
+<!-- </div> -->
+	
+	<script type="text/javascript">
+	
+	
+	
+	var all_name="service";
+	
+	zw.create_input({id:"Inquire_name",label:"服务站名",name:"name"});
+	 zw.create_buttom({id:"Inquire_submit",label:"查询",onclick: function( ){   execute_table(object_table); }});
+	
+	//创建增删改查框
+	var object_component={
+	port:all_name,
+	div_name:"synchronous_div",
+	insert_id:"Inquire_add",
+	sql_type:"",
+	sql_table:all_name,
+	 data:[
+    {name:"title", label:"服务站名称", type:"input" },
+    {name:"address", label:"服务站地址", type:"input" },
+    {name:"phone", label:"服务站电话", type:"input" },
+    {name:"region", label:"服务站区域", type:"input" },
+    {name:"chassis_brand", label:"底盘品牌", type:"input" },
+    ]
+	}
+	
+
+	
+			var object_table={
+					port:all_name,
+					sql_type:"select",
+					sql_table:all_name,
+					div_name:"table",
+	select_component:[
+	                  {id:"Inquire_name",type:"input",name:"name"}
+	                  ],
+	table_cols:[
+	            {field:"title", title:"服务站名称" },
+	            {field:"address", title:"服务站地址" },
+	            {field:"phone", title:"服务站电话" },
+	            {field:"region", title:"服务站区域" },
+	            {field:"chassis_brand", title:"底盘品牌" },
+	  	          {field:"update_people",title:"更新人"},
+	  	          {field:"update_time",title:"更新时间"},
+	  	          {field:"remove",onclick:"remove"},
+	  	          {field:"modify",onclick:"modify"}
+	  	          ]
+	}
+	
+	zw.execute_component(object_component) //创建窗口组件
+	zw.execute_table(object_table)//创建表格
+	zw.execute_insert(object_component)//新增
+	function remove(object) {
+		let ob=JSON.parse(object);
+		object_component.sql_type="remove";
+		ob.object_component=object_component;
+		zw.execute_remove(ob);
+		zw.execute_table(object_table);
+}
+	
+	function modify(object) {
+		let ob=JSON.parse(object);
+		
+		ob.object_component=object_component;
+		zw.execute_modify(ob);
+		zw.execute_table(object_table);
+}
+	function synchronous_submit() {
+		object_component.sql_type="synchronous";
+		zw.execute_submit(object_component)
+		zw.execute_table(object_table);
+}
+
+	
+	
+	
+// //创建文本框
+// zw.create_input({id:"Inquire_title",label:"服务站名称"});
+// zw.create_input({id:"title",label:"服务站名称"});
+// zw.create_input({id:"address",label:"服务站地址"});
+// zw.create_input({id:"phone",label:"服务站电话"});
+// zw.create_input({id:"region",label:"服务站区域"});
+// zw.create_input({id:"chassis_brand",label:"底盘品牌"});
+
+
+// //创建查询按钮
+// zw.create_buttom({id:"Inquire_submit",label:"查询",onclick: function( ){   refresh(); }});
+
+
+
+// var table_cols=[
+// 	          {field:"title",title:"服务站名称"},
+// 	          {field:"address",title:"服务站地址"},
+// 	          {field:"phone",title:"服务站电话"},
+// 	          {field:"region",title:"服务站区域"},
+// 	          {field:"chassis_brand",title:"底盘品牌"},
+// 	          {field:"update_people",title:"更新人"},
+// 	          {field:"update_time",title:"更新时间"},
+// 	          {field:"remove",onclick:"remove"},
+// 	          {field:"modify",onclick:"modify"}
+// 	          ]
+
+// refresh()
+// //刷新表格
+// function refresh() {
+// 	  var paramter={
+// 			  title:document.getElementById("Inquire_title_input").value
+//   		   }
+	
+// 	  var dataarr=zw.ajax({url:"../service_query",parameter:paramter});
+//      zw.create_table({cols:table_cols,data:dataarr.data,id:"table"});
+//       zw.create_pagination({id:"pagination",total:dataarr.count,rows:10,current:1,content: function(current ){  
+//     	  paramter.current=(current||1)
+//    	  var dataarr=zw.ajax({url:"../service_query",parameter:paramter}); 
+//        zw.create_table({cols:table_cols,data:dataarr.data,id:"table"});
+//        }
+//       })
+// }
+
+
+
+
+
+// //新增
+// zw.create_buttom({id:"Inquire_add",label:"新增",onclick: function( ){   	
+// zw.create_popups({id:"synchronous_div",title:"信息维护",style:"width:22rem;height:20rem;"});
+//  zw.create_buttom({id:"synchronous_submit",label:"提交",style:"margin-left: 7rem;",onclick: function( ){  
+// 	synchronous_submit();
+// 	}});
+ 
+//  zw.create_buttom({id:"synchronous_remove",label:"取消",style:"margin-left: 2rem;",onclick: function( ){  
+// 	 document.getElementById("close").onclick();
+// 	}});
+// }});
+
+// //删除
+// function remove(object) {
+//     let id=JSON.parse(object).id;
+//      var msg = "确认删除 ？";
+//         if (confirm(msg)==true){
+//         	var paramter={
+//         			id:id
+//         	}
+//       	  var re=zw.ajax({url:"../service_remove",type:"post",parameter:paramter});
+//         	  refresh()
+// 		}
+// }
+// //修改
+// function modify(object) {
+	
+// 		//弹出框
+// 	   zw.create_popups({id:"synchronous_div",title:"信息维护",style:"width:22rem;height:20rem;"});
+// 	   	//弹出框提交按钮
+// 	    zw.create_buttom({id:"synchronous_submit",label:"提交",style:"margin-left: 7rem;",onclick: function( ){  
+// 	   	synchronous_submit();
+// 	   	}});
+// 	    zw.create_buttom({id:"synchronous_remove",label:"取消",style:"margin-left: 2rem;",onclick: function( ){  
+// 	    	 document.getElementById("close").onclick();
+// 	    	}});
+	   	
+// 	    let data=JSON.parse(object)
+// 	    document.getElementById("synchronous_id").value=data.id
+// 		document.getElementById("title_input").value=data.title
+// 		document.getElementById("address_input").value=data.address
+// 		document.getElementById("phone_input").value=data.phone
+// 		document.getElementById("region_input").value=data.region
+// 		document.getElementById("chassis_brand_input").value=data.chassis_brand
+		
+// }
+
+
+
+
+// //更新或者新增请求服务端
+// function synchronous_submit() {
+	
+	
+// 		let	id=document.getElementById("synchronous_id").value
+// 		let	title=document.getElementById("title_input").value
+// 		let	address=document.getElementById("address_input").value
+// 		let	phone=document.getElementById("phone_input").value
+// 		let    region=document.getElementById("region_input").value
+// 		let    chassis_brand=document.getElementById("chassis_brand_input").value
+// 	var parameter={
+// 			id:id,
+// 			title:title,
+// 			address:address,
+// 			phone:phone,
+// 			region:region,
+// 			chassis_brand:chassis_brand
+// 	}
+// 		  var dataarr=zw.ajax({url:"../service_synchronous",type:"post",parameter:parameter});
+// 		alert(dataarr.message)
+// 		refresh();//刷新表格
+// 		document.getElementById("close").onclick();//关闭弹窗
+// }
+
+
+</script>
+</body>
+</html>

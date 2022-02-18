@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+<script src="zw.js"></script>
+</head>
+<style type="text/css">
+
+
+</style>
+<!--import引入-->
+<body >
+		<div id="rear_head" ></div>
+  <script>
+  	 document.getElementById("rear_head").innerHTML = '<object type="text/html" data="rear_head.html" style="width:100%;height:3rem;overflow:hidden;"></object>';
+</script>
+		<!-- 下面左边结束 -->
+		
+<div id="rear_right"  style=" float: left;margin-top: -0.3rem;    height: calc(100% - 3.1rem);"></div>
+  <script>
+  	 document.getElementById("rear_right").innerHTML = '<object type="text/html" data="rear_right.html" style="width:15rem;height:100%;overflow:hidden;"></object>';
+</script>
+		
+		<!-- 下面左边 -->
+		<div class="rear_left">
+		
+		<div id="Inquire_name"  ></div>
+		<br/>
+		<div id="Inquire_submit" style="margin-left:3rem;"></div>
+		
+		 </div>
+		
+		<!-- 下面右边 -->
+		<div class="rear_right">
+		<div id="Inquire_add"></div>
+		<hr/>
+		<div id="table" style="width: 100%;"></div>
+		<div class="center" id="pagination"></div>
+		</div>
+		<!-- 下面右边结束 -->
+	          
+<div id="synchronous_div"  style="display:none">
+<input type="hidden" name="id" id="synchronous_div_id" >
+</div>
+	
+	<script type="text/javascript">
+	zw.create_input({id:"Inquire_name",label:"标题",name:"name"});
+	 zw.create_buttom({id:"Inquire_submit",label:"查询",onclick: function( ){   execute_table(object_table); }});
+	
+	 console.log(zw_tool)
+		var object_component={
+				port:"video",
+				div_name:"synchronous_div",
+				insert_id:"Inquire_add",
+				sql_type:"",
+				sql_table:"video",
+				 data:[
+			     {name:"name", label:"标题", type:"input" },
+			     {name:"sort", label:"排序", type:"input" },
+			     {name:"summary", label:"摘要", type:"input" },
+			     {name:"key_words", label:"关键词", type:"input" },
+			     {name:"video", label:"视频地址", type:"input" },
+			     {name:"video_type", label:"视频分类", type:"select",data:zw_tool.get_video_type()},
+			     {name:"related_car_type", label:"关联车型", type:"select",data:zw_tool.get_car_type() },
+			     {name:"recommend", label:"推荐位", type:"recommend_checkbox",data:zw_tool.get_recommend_checkbox_data()}
+			     ]
+				}
+				
+
+				
+					var object_table={
+				port:"video",
+				sql_type:"select",
+				sql_table:"video",
+				div_name:"table",
+				select_component:[
+				                  {id:"Inquire_name",type:"input",name:"name"}
+				                  ],
+				table_cols:[
+				  	           {field:"name",title:"标题"},
+	        				  {field:"related_car_type",title:"关联汽车类型"},
+				  	          {field:"update_people",title:"更新人"},
+				  	          {field:"update_time",title:"更新时间"},
+				  	          {field:"remove",onclick:"remove"},
+				  	          {field:"modify",onclick:"modify"}
+				  	          ]
+				}
+	 
+	zw.execute_component(object_component) //创建窗口组件
+	zw.execute_table(object_table)//创建表格
+	zw.execute_insert(object_component)//新增
+	function remove(object) {
+		let ob=JSON.parse(object);
+		object_component.sql_type="remove";
+		ob.object_component=object_component;
+		zw.execute_remove(ob);
+		zw.execute_table(object_table);
+}
+	
+	function modify(object) {
+		let ob=JSON.parse(object);
+		ob.object_component=object_component;
+		zw.execute_modify(ob);
+		zw.execute_table(object_table);
+}
+	function synchronous_submit() {
+		object_component.sql_type="synchronous";
+		zw.execute_submit(object_component)
+		zw.execute_table(object_table);
+}
+
+	
+	
+	
+// 	zw.create_select({id:"related_car_type",label:"关联车型",data:zw_tool.get_car_type()});
+// 	 zw.create_checkbox({id:"synchronous_checkbox",label:"推荐位",data:data_checkbox});
+// 	 zw.create_file_image({id:"image",label:"标题图"});
+// 				//id
+// 				document.getElementById("synchronous_id").value=data.id
+// 				//汽车类型
+// 				document.getElementById("related_car_type_select").value=data.related_car_type
+// 				  if(data.whether_home==="是否首页"){
+// 					  document.getElementsByName("synchronous_checkbox_checkbox")[0].checked=true
+// 				  }
+// 			    if(data.whether_ad==="是否广告"){
+// 			    	document.getElementsByName("synchronous_checkbox_checkbox")[1].checked=true
+// 			    }
+			    
+// 	}
+
+// 	//更新或者新增请求服务端
+// 	function synchronous_submit() {
+		
+		
+// 		let whether_home="否"
+// 			let whether_ad="否"
+			
+			
+// 	   if( document.getElementsByName("synchronous_checkbox_checkbox")[0].checked){
+// 					  whether_home="是否首页"
+// 				  }
+// 		  if( document.getElementsByName("synchronous_checkbox_checkbox")[1].checked){
+// 			  whether_ad="是否广告"
+// 		  }
+
+			
+			
+// 		var parameter={
+// 			id:document.getElementById("synchronous_id").value,
+// 			title:document.getElementById("title_input").value,
+// 			sort:document.getElementById("sort_input").value,
+// 			video: encodeURIComponent(document.getElementById("video_input").value).replace(/'/g,'&#39;'),
+// 			image: encodeURIComponent(document.getElementById("image_file").value),
+// 			whether_home:whether_home,
+// 			whether_ad:whether_ad,
+// 			related_car_type:document.getElementById("related_car_type_select").value
+// 		}
+// 			  var dataarr=zw.ajax({url:"../video_synchronous",type:"post",parameter:parameter});
+// 			alert(dataarr.message)
+// 			refresh();//刷新表格
+// 			document.getElementById("close").onclick();//关闭弹窗
+// 	}
+
+
+</script>
+</body>
+</html>

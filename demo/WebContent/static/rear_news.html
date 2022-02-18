@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>后台管理</title>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no">
+<script src="zw.js"></script>
+</head>
+<style type="text/css">
+
+
+</style>
+<!--import引入-->
+<body >
+		<div id="rear_head" ></div>
+  <script>
+  	 document.getElementById("rear_head").innerHTML = '<object type="text/html" data="rear_head.html" style="width:100%;height:3rem;overflow:hidden;"></object>';
+</script>
+		<!-- 下面左边结束 -->
+		
+<div id="rear_right"  style=" float: left;margin-top: -0.3rem;    height: calc(100% - 3.1rem);"></div>
+  <script>
+  	 document.getElementById("rear_right").innerHTML = '<object type="text/html" data="rear_right.html" style="width:15rem;height:100%;overflow:hidden;"></object>';
+</script>
+
+		<!-- 下面左边 -->
+		<div class="rear_left" style="padding:0;">
+		<input type="hidden" name="news_type_input" id="news_type_input"  />
+     <div class="nav">
+         <ul id="ulMenu">
+             <li class="current"  id="li1"><a  href="javascript:void(0);" onclick="inquire('行业动态','li1')">行业动态</a></li>
+             <li id="li2"><a  href="javascript:void(0);" onclick="inquire('专汽评测','li2')">专汽评测</a></li>
+             <li id="li3"><a  href="javascript:void(0);" onclick="inquire('促销导购','li3')">促销导购</a></li>
+             <li id="li4" ><a  href="javascript:void(0);" onclick="inquire('用车养车','li4')">用车养车</a></li>
+             <li id="li5"><a  href="javascript:void(0);" onclick="inquire('政策法规','li5')">政策法规</a></li>
+             <li id="li6"><a  href="javascript:void(0);" onclick="inquire('专汽话题','li6')">专汽话题</a></li>
+         </ul>
+     <div>
+     </div>
+ </div>
+		
+		 </div>
+		
+		
+		<!-- 下面右边 -->
+		<div class="rear_right">
+		<div id="Inquire_add">
+		</div>
+		<hr/>
+		<div id="table" style="width: 100%;"></div>
+		<div class="center" id="pagination"></div>
+		</div>
+		<!-- 下面右边结束 -->
+	          
+<div id="synchronous_div"  style="display:none">
+<input type="hidden" name="id" id="synchronous_div_id" >
+</div>
+	
+	<script type="text/javascript">
+	
+	var type="行业动态";
+	var inquire_type="行业动态";//默认值
+	var inquire_id="li1";//默认id
+	var all_name="news";//大类
+	
+	var drelated_car_type_data=zw.get_drelated_car_type_data();
+	//创建增删改查框
+	var object_component={
+	port:all_name,
+	div_name:"synchronous_div",
+	insert_id:"Inquire_add",
+	sql_type:"",
+	sql_table:all_name,
+	 data:[
+    {name:"title", label:"标题", type:"input" },
+    {name:"introduction", label:"简介", type:"input" },
+    {name:"related_car_type", label:"关联汽车类型", type:"select",data:drelated_car_type_data},
+    {name:"sort", label:"排序", type:"input" },
+    {name:"source", label:"来源", type:"input" },
+    {name:"keyword", label:"关键词", type:"input" },
+    {name:"content", label:"内容", type:"rich_text" },
+    ]
+	};
+	
+	var object_table={
+			port:all_name,
+			sql_type:"select",
+			sql_table:all_name,
+			div_name:"table",
+select_component:[
+              {id:"news_type",type:"input",name:"type"}
+              ],
+table_cols:[
+            
+            {field:"title",title:"标题"},
+	          {field:"ctr",title:"点击率"},
+	          {field:"related_car_type",title:"关联汽车类型"},
+	         {field:"sort",title:"排序"},
+	          {field:"update_people",title:"上传日期"},
+	          {field:"update_time",title:"上传人"},
+	          {field:"remove",onclick:"remove"},
+	          {field:"modify",onclick:"modify"}
+	          ]
+};//表格
+
+
+inquire('行业动态','li1');
+	
+	//1.点击查询
+	function inquire(type,id){
+		if(type!==undefined){
+			inquire_type=type;
+			document.getElementById("news_type_input").value=type;
+		}
+		if(id!==undefined){
+			inquire_id=id;
+		}
+		
+		document.getElementById("li1").classList.remove('current');
+		document.getElementById("li2").classList.remove('current');
+		document.getElementById("li3").classList.remove('current');
+		document.getElementById("li4").classList.remove('current');
+		document.getElementById("li5").classList.remove('current');
+		document.getElementById("li6").classList.remove('current');
+		document.getElementById(inquire_id).classList.add('current');
+		zw.execute_component(object_component) //创建窗口组件
+		zw.execute_table(object_table)//创建表格
+		zw.execute_insert(object_component)//新增
+	}
+	
+	
+
+	
+function remove(object) {
+let ob=JSON.parse(object);
+object_component.sql_type="remove";
+ob.object_component=object_component;
+zw.execute_remove(ob);
+zw.execute_table(object_table);
+}
+
+function modify(object) {
+let ob=JSON.parse(object);
+
+ob.object_component=object_component;
+zw.execute_modify(ob);
+zw.execute_table(object_table);
+}
+function synchronous_submit() {
+	
+	let str=document.getElementById("content_rich_text").innerHTML;
+	var imgUrlFun = function(str){
+		  var data = '';
+		   str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/, function (match, capture) {
+		     data = capture;
+		   });
+		  return data
+		 }
+	//去除字符串里面的html标签的正则公式
+// 	var filterHTMLTag = function (str) {
+// 		  str = str.replace(/<\/?[^>]*>/g,''); //去除HTML tag
+// 		  str = str.replace(/[ | ]*\n/g,'\n'); //去除行尾空白
+// 		  str=str.replace(/ /ig,'');//去掉 
+// 		  return str;
+// 		 }
+	
+	let customize=[{name:"type",value:inquire_type},{name:"img",value:encodeURIComponent(imgUrlFun(str))}];
+	object_component.customize=customize;
+object_component.sql_type="synchronous";
+zw.execute_submit(object_component)
+zw.execute_table(object_table);
+}
+	
+
+</script>
+</body>
+</html>
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

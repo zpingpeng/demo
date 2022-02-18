@@ -1,0 +1,423 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+*{
+border:0px;
+margin: 0px;
+padding: 0px;
+}
+div{
+border:0px solid red;
+}
+
+
+/* 车型详情 */
+.car_details_title { height: 495px; width: 100%; background-image: url(http://images.17350.com/images/tianchong.png); }
+.car_details_title { width: 1200px; margin: 0 auto; height: 495px; }
+
+.car_details_title_img  { margin-top:20px; width: 500px; height: 360px; background-color: #FFFFFF; text-align: center;float: left; display: inline-block; }
+.car_details_title_img_big { position: relative; float: left; width: 500px; height: 335px; overflow: hidden; text-align: center; background-color: #FFFFFF; border-radius: 2px; }
+.car_details_title_img_big #midimg { width: 500px; height: 333px;}
+.car_details_title_img_big #winSelector { width:235px; height:210px; }
+
+.car_details_title_img_small { position: relative; height: 80px; margin-top: 15px; background-color: #FFFFFF; width: 500px; overflow: hidden; float: left; border-radius: 2px; }
+
+
+.scrollbutton { width: 32px; height: 80px; overflow: hidden; position: relative; float: left; cursor: pointer; }
+.scrollbutton.smallImgUp, .scrollbutton.smallImgUp.disabled { background-repeat: no-repeat; background-image: url(http://images.17350.com/images/prev.jpg); width: 32px; height: 80px; background-position: 0px -8px; }
+.scrollbutton.smallImgDown, .scrollbutton.smallImgDown.disabled { background-repeat: no-repeat; background-image: url(http://images.17350.com/images/next.jpg); margin-left: 470px; margin-top: -80px; width: 32px; height: 80px; background-position: 0px -8px; }
+
+car_details_title_text{
+}
+
+ .car_details_title_text { width: 630px; height: 390px; float: left; padding: 40px 0px 0px 50px; display: inline-block; margin: 20px 0px 0px 20px; background-color: #FFFFFF; border-radius: 2px; }
+ .car_details_title_text h1 { font-size: 24px; display: inline-block; color: #313131; padding-bottom:15px; font-weight: bold; width:100%; }
+ .car_details_title_text p { font-size: 12px; color: #FF6600display: inline-block;
+padding-bottom:10px; }
+ .car_details_title_text span { padding-bottom:10px; display:block; }
+ 
+ .car_details_title_text_btn { width: 300px; height: 40px; }
+.car_details_title_text_btn li {width: 120px;float:left;text-align:center;margin-right: 20px;}
+.car_details_title_text_btn li input:hover {color: #EEEEEE; background-color: #808080; }
+.car_details_title_text_btn li input {display: inline-block; text-align: center; line-height: 40px; background-color: #ff5252; color: #FFFFFF; border-radius: 2px; margin-right: 20px; border:0;cursor:pointer;font-family:"微软雅黑";padding: 0px 10px;}
+ 
+ .car_details_title_order { width: 430px; background-color:#FFFFFF;filter:alpha(opacity=90);opacity:0.9; padding:20px; overflow:hidden; display:none; }
+ 
+ 
+.car_details_tab { display: block; width: 100%; height: 50px; background-color: #EEEEEE; top: 0px; border-top: 2px solid #313131; }
+.car_details_tab li { float:left; }
+.car_details_tab li a { display: block; 
+padding: 0 19px;
+line-height:48px;color: #313131; display: block; cursor: pointer; width: 97px; height:48px; text-align: center; line-height: 48px; }
+.car_details_tab li a:hover { background: #313131; color:#fff; border-top:2px solid #ff4a4a; height:48px; }
+.car_details_tab .car_details_thistab a { background: #313131; border-top: 2px solid #ff4a4a; color:#fff; height:48px; }
+car_details_tab a{position: relative;}
+car_details_tab span.jilu-num{position: absolute;top: -13px;right: 5px;}
+
+
+
+
+
+
+.zhanshi {
+    width: 1200px;
+    margin: 0 auto;
+    height: 495px;
+}
+.zhanshi {
+    height: 495px;
+    width: 100%;
+    background-image: url(http://images.17350.com/images/tianchong.png);
+}
+
+.zhanshi .show_left {
+    width: 500px;
+    height: 495px;
+    float: left;
+    display: inline-block;
+}
+
+.preview {
+    width: 500px;
+    height: 475px;
+    margin-top: 20px;
+}
+
+.bigImg {
+    position: relative;
+    float: left;
+    width: 500px;
+    height: 335px;
+    overflow: hidden;
+    text-align: center;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.bigImg #midimg {
+    width: 500px;
+    height: 333px;
+}
+
+.bigImg #winSelector {
+    width: 235px;
+    height: 210px;
+}
+
+.smallImg {
+    position: relative;
+    height: 80px;
+    margin-top: 15px;
+    background-color: #FFFFFF;
+    width: 500px;
+    overflow: hidden;
+    float: left;
+    border-radius: 2px;
+}
+
+.scrollbutton.smallImgUp, .scrollbutton.smallImgUp.disabled {
+    background-repeat: no-repeat;
+    background-image: url(http://images.17350.com/images/prev.jpg);
+    width: 32px;
+    height: 80px;
+    background-position: 0px -8px;
+}
+
+#imageMenu {
+    height: 80px;
+    width: 445px;
+    overflow: hidden;
+    float: left;
+}
+
+#imageMenu li {
+    height: 80px;
+    width: 100px;
+    overflow: hidden;
+    float: left;
+    text-align: left;
+    margin-left: 6px;
+}
+
+#imageMenu li#onlickImg img {
+    width: 100%;
+    height: 80px;
+}
+
+#imageMenu li img {
+    width: 100%;
+    height: 80px;
+    cursor: pointer;
+}
+
+
+
+/* 左边 */
+.zhanshi .show_rihgt {
+    width: 630px;
+    height: 390px;
+    float: left;
+    padding: 40px 0px 0px 50px;
+    display: inline-block;
+    margin: 20px 0px 0px 20px;
+    background-color: #FFFFFF;
+    border-radius: 2px;
+}
+
+.zhanshi .show_rihgt h1 {
+    font-size: 24px;
+    display: inline-block;
+    color: #313131;
+    padding-bottom: 15px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.zhanshi .show_rihgt p {
+    font-size: 12px;
+    color: #FF6600display: inline-block;
+    padding-bottom: 10px;
+}
+
+.zhanshi .show_rihgt span {
+    padding-bottom: 10px;
+    display: block;
+}
+
+.f_red {
+    color: #ee1d23;
+}
+ul, li {
+    list-style: none;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    outline: none;
+    color: #666666;
+}
+
+#vertical_img img{
+height: 360px;
+    width: 500px;
+}
+
+
+</style>
+</head>
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+
+
+
+<div class="zhanshi">
+    <div class="show_left">
+      <div class="preview">
+	<div id="vertical_img" class="bigImg">
+	</div><!--bigImg end-->	
+	<div class="smallImg">
+<!-- 		<div class="scrollbutton smallImgUp disabled"></div> -->
+		<div id="imageMenu">
+			<ul id="onlick_img">	 </ul>
+		</div>
+<!-- 		<div class="scrollbutton smallImgDown"></div> -->
+	</div><!--smallImg end-->	
+</div>
+<!--preview end-->
+</div>
+
+<!--show_right start-->
+
+    <div class="show_rihgt">
+        <h1 id="title"></h1>
+        <p id="horsepower" class="red"></p>
+        <span>专汽网优惠价： <a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="f_red">咨询底价</a></span>        <span>配送方式：<a href="/about/yonghuziti.html" target="_blank">自提</a>，<a href="/about/songhuoshangmen.html" target="_blank">送货上门</a>，<a href="/about/haiwaipeisong.html" target="_blank">海外配送</a>。</span>
+        <span>服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：由专汽网协调厂家发车并提供售后服务。</span>
+        <span>车型颜色：喷漆可选</span>
+		<span>生产周期：下订单起7天内交货</span>
+        <span>支付方式：<a href="/about/fenqifukuan.html" target="_blank" rel="nofollow">分期付款</a>，<a href="/about/songhuoshangmen.html" target="_blank" rel="nofollow">送货上门</a>，<a href="/about/haiwaipeisong.html" target="_blank" rel="nofollow">海外配送</a>。</span>
+		<div class="blank_20"></div>
+   </div>
+	
+	<!--show_right end-->
+  <div style="clear:both"></div>
+ </div>
+
+<!--show_right start-->
+
+
+
+
+
+
+
+
+
+  <div>
+         <ul class="car_details_tab" id="car_details_tab">
+          <li  name="content_li"  class="car_details_thistab"  id="introduction_li"><a id="liangdian"  onclick="hide_and_show_content('introduction')" >车型亮点</a></li>
+          <li name="content_li"  id="parameter_li"                       ><a  id="juticanshu"  onclick="hide_and_show_content('parameter')">具体参数</a></li>
+          </ul>     
+     </div>     
+       <div class="pro_detail" id="introduction" name="content" > 
+       
+       
+       
+		</div>
+      <div class="pro_detail" id="parameter"  name="content" style="display: block;"> 
+       
+       
+       
+		</div>
+
+
+</div><!--  总div结束 -->
+
+
+
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+   
+      
+      
+      function getQueryString(name) {
+    	  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    	  var r = window.location.search.substr(1).match(reg);
+    	  if (r != null) {
+    	  return unescape(r[2]);
+    	  }
+    	  return null;
+    	  }
+      
+      get_data()
+    	  //获取信息
+      function get_data(){
+    	  
+    	 var paramter={
+    		  id:getQueryString('id')
+    	  }
+    	  var dataarr=zw.ajax({url:"../car_query",parameter:paramter}).data;
+     
+    	 
+    	  
+//     	  var image_title= document.getElementById('image_title');
+//     	  image_title.innerHTML=dataarr[0].title;
+    	  
+    	  
+    	  
+    	  
+   	  var onlick_img= document.getElementById('onlick_img');
+    	var vertical_img= document.getElementById('vertical_img');
+    	try{
+	  var images_arr=decodeURIComponent(dataarr[0]["images"]).split("||")
+		for(let i=0;i<images_arr.length-1;i++){
+			onlick_img.innerHTML +='<li onclick=hide_and_show(\'images'+i+'\')  style="cursor: pointer;">'+images_arr[i]+'</li>';
+		 vertical_img.innerHTML +='<div name="image_arr" id="images'+i+'" style=" display: none; width:500px;height:360px;">'+images_arr[i]+'</div>';
+			
+		}
+		
+	  hide_and_show("images0")
+    	}catch (e) {
+    		console.log(e)
+    	}
+	  
+	   var title= document.getElementById('title');
+	  title.innerHTML=dataarr[0].title;
+	  
+	   var horsepower= document.getElementById('horsepower');
+	   horsepower.innerHTML=dataarr[0].horsepower;
+	  
+	   var introduction= document.getElementById('introduction');
+	   introduction.innerHTML=decodeURIComponent(dataarr[0].introduction);
+	  
+	   
+	   var parameter= document.getElementById('parameter');
+	   parameter.innerHTML=decodeURIComponent(dataarr[0].parameter);
+	  
+	  
+//     	  console.log(dataarr[0])
+//            content_for("exterior","外观",dataarr)
+//     	    content_for("cab","驾驶室",dataarr)
+//     	    content_for("ite","底盘",dataarr)
+//     	    content_for("tops","上装",dataarr)
+    
+// //     	  var image_type= document.getElementById('image_type');
+// //     	  image_type.innerHTML="";
+    	  
+    	  
+    	  
+// //     	  var update_time= document.getElementById('update_time');
+// //     	  update_time.innerHTML="时间："+dataarr[0].update_time;
+    	  
+// //     	  var ctr= document.getElementById('ctr');
+// //     	  ctr.innerHTML=dataarr[0].ctr;
+    	  
+//     	  var content= document.getElementById('content');
+//     	  content.innerHTML=decodeURIComponent(dataarr[0].content);
+    	  
+         
+    	  
+    	  
+      }
+      
+      
+      function hide_and_show(id){
+    	  
+    	  var name_arr = document.getElementsByName("image_arr");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        		  name_arr[i].style.display='none';  //隐藏所有
+	        }
+	        try {
+	        	 document.getElementById(id).style='display: block;';
+	       }
+	        catch(err) {
+	             console.log('没有id')
+	       } 
+    	 
+    	  
+      }
+      function hide_and_show_content(id){
+    	  
+    	  
+    	  var name_arr = document.getElementsByName("content");
+    	  var li_arr = document.getElementsByName("content_li");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        		  name_arr[i].style.display='none';  //隐藏所有
+	        		  li_arr[i].className	=li_arr[i].className.replace('car_details_thistab',"")
+	        }
+    		  
+    	  document.getElementById(id).style='display: block;';
+    	  //添加样式
+    	  var dom_class = document.getElementById(id+"_li").className;
+      	dom_class = dom_class.concat('car_details_thistab');
+      	document.getElementById(id+"_li").className = dom_class;
+      }
+      
+      
+      
+      </script>
+      
+      
+      
+
+</body>
+</html>

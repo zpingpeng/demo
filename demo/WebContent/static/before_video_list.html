@@ -1,0 +1,158 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+
+<style type="text/css">
+.content_list .img {
+    position: relative;
+    padding: 40px 0px 5px 0px;
+    overflow: hidden;
+    text-align: center;
+}
+.content_list .txt {
+    font-size: 14px;
+    overflow: hidden;
+    padding: 0px 0px;
+}
+
+</style>
+
+
+</head>
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+
+<!-- 页头 -->
+<div id="head" style="height:12rem;width:100%;">
+</div>
+
+  <script>
+  //console.log(document.getElementById("tail"))
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      //document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      </script>
+<!-- 页头结束 -->
+<div class="category"  id="category">
+
+	     <ul class=" category_title" >
+		     <li class="category_title_selected"><a href="/product/">车型分类</a></li>
+		 </ul>
+	  
+	 </div>
+
+
+
+<div class="content">
+	   <ul class="content_list" id="content_list">
+	   </ul>
+   </div>
+<div class="center" id="pagination">
+</div>
+
+
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+   
+      
+      get_type()
+      //根据区域获取服务站..分页
+      function get_type(){
+    	  
+    	  
+    	  var paramter={
+    	//		  title:document.getElementById("Inquire_title_input").value
+      		   }
+    	
+    	  var dataarr=zw.ajax({url:"../type_query",parameter:paramter}).data;
+    	  var service_content= document.getElementById('category');
+    	  
+    	 	let parent_arr=[]
+		 	//先找出第一级别
+		 	 for (var i in dataarr) {
+		            if(dataarr[i].parentId==="0"){
+		            	parent_arr.push(dataarr[i])
+		            }
+		        }
+		 	//可以根据动态列创建map然后返回到map中。当前就这样
+		 	
+		 	//然后根据第一级别编写第二级别左边
+		 	var html="";
+		 	 for (var y in parent_arr) {
+		 		 
+		 		html+=''
+	    			+' <div class="category_content">'
+	    		    +'  <div class="category_content_big"><a href="javascript:onclick=show(\''+parent_arr[y].id+'\') ">'+parent_arr[y].title+'</a></div>'
+				 +' <ul>'
+		 		 for (var u in dataarr) {
+		 			 if(dataarr[u].parentId===parent_arr[y].id){
+		 				html+= '<li class="category_content_small">'
+						 +' <a href="javascript:onclick=show(\''+dataarr[u].id+'\') " target="_blank"> '+dataarr[u].title+'</a>'
+								+' </li>';
+			            }
+		 		}
+		 		html+='</ul></div>'
+		 		
+		 	}
+    	  
+		 	service_content.innerHTML=html;
+    	  
+    	  
+      }
+      
+      
+      
+      var type="";
+      get_pagination()
+      //根据区域获取服务站..分页
+      function get_pagination(){
+    	
+    	  var dataarr=zw.ajax({url:"../video_query",parameter:{}});
+    	  
+         //分页器
+          zw.create_pagination({id:"pagination",total:dataarr.count,rows:10,current:1,content: function(current){  
+        			  
+        			  //请求服务
+        			  	  var paramter={
+    	     	     type:type,
+    	     	    current:(current||1)
+      	     	   }
+       				  var dataarr=zw.ajax({url:"../video_query",parameter:paramter}).data; 
+        		//编辑数据
+        			  var service_content= document.getElementById('content_list');
+        		console.log(dataarr)
+        			  service_content.innerHTML="";
+        	    	  for(var i=0;i<dataarr.length;i++){
+        	    		  console.log(dataarr[i])
+        	    		 
+        	    		service_content.innerHTML +=''
+        	    			+'     <li>'
+        	    		     +'     <div class="img"><a href="./before_video_details.html?id='+dataarr[i].id+'" >'+decodeURIComponent(dataarr[i].image).replace("||","")+'</a></div>'
+        			     +'   <div class="txt"><a href="./before_video_details.html?id='+dataarr[i].id+'">'+dataarr[i].title+'</a>'
+        				+'</div>'
+        				+' </li>';
+        	    	  }
+        		
+          } })
+    	  
+    	  
+      }
+      
+      
+      
+      
+      
+      
+      </script>
+</body>
+</html>

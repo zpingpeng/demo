@@ -1,0 +1,230 @@
+<!--  
+1.先用div画框架
+
+先写每个页面必须的。然后问问姐姐客户最想在每个页面看到什么
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<!-- 让网站不去请求favicon.ico图标 -->
+<link rel="icon" href="data:image/ico;base64,aWNv">
+<title>惠购专用车网，省钱-省时-省心</title>
+<link rel="stylesheet"  href="zw.css"/>
+<script src="zw.js"></script>
+<style type="text/css">
+html {
+	font-size: 16px;
+}
+/* 换行默认清除浮动，以防元素塌陷导致div出现问题 */
+br {
+	clear: both;
+}
+.list_img img {
+   width: 20rem; height: 12rem;
+}
+
+.module_title{
+	width:calc(100% - 1.2rem);
+	height:3rem;
+    background-color: #fff;
+    margin: 0.5rem auto;
+    box-shadow: 1px 1px 2px #ccc;
+    font-size: 18px;
+    font-color: #313131;
+    line-height: 3rem;
+    font-weight: 500;
+    padding-left:1rem;
+    border: 1px #e6e6e6 solid;
+}
+.news_title{
+padding-left:1rem;
+    font-size: 16px;
+    text-align: left;
+    line-height: 34px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+}
+
+
+/* 菜单的显示与隐藏 */
+.child{
+display: none;
+}
+.item:hover +.child{
+display: block;
+}
+
+.child:hover {
+display: block;
+}
+
+
+ 
+</style>
+
+   
+</head>
+ 
+
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:30rem;" id="category">
+
+</div><!-- 车型与广告结束 -->
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:47rem;">
+<!-- 模块标题 -->
+<div class="module_title"  >促销车辆</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:100%;height:41rem;" id="promotion">
+
+
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:47rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">配件</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:100%;height:41rem;" id="accessories">
+
+
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+
+
+
+
+
+<!-- 车型与广告 -->
+<div style="width:100%;height:34rem;">
+<!-- 模块标题 -->
+<div class="module_title" style="">新闻</div><!-- 模块标题结束 -->
+<!--  促销总div -->
+<div style="width:49.5%;height:10rem;float:left" id="industry_news">
+</div>
+<div style="width:49.5%;height:10rem;float:left;"  id="special_car_evaluation">
+</div>
+<div style="width:49.5%;height:10rem;float:left"  id="promotion_shopping_guide">
+</div>
+<div style="width:49.5%;height:10rem;float:left;"  id="keep_a_car_with_a_car">
+</div>
+<div style="width:49.5%;height:10rem;float:left"  id="policies_and_regulations">
+</div>
+<div style="width:49.5%;height:10rem;float:left;"  id="special_car_topic">
+</div>
+<div>
+
+</div><!--  促销总div结束 -->
+</div><!-- 车型与广告结束 -->
+</div><!-- 总div结束 -->
+<div id="tail" style="width:1200px;margin:0 auto;height: 20rem;"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+   
+    	zw.is_phone({phone:false}); 
+    	
+    	
+    	  get_type()
+          //根据区域获取服务站..分页
+          function get_type(){
+        	  var dataarr=zw.ajax({url:"../type_query",parameter:{}}).data;
+        	  var service_content= document.getElementById('category');
+        	 	let parent_arr=[]
+    		 	//先找出第一级别
+    		 	 for (var i in dataarr) {
+    		            if(dataarr[i].parentId==="0"){
+    		            	parent_arr.push(dataarr[i])
+    		            }
+    		        }
+    		 	//可以根据动态列创建map然后返回到map中。当前就这样
+    		 	//然后根据第一级别编写第二级别左边
+    		 	var html="";
+    		 	 for (var y in parent_arr) {
+    		 		html+=' <div class="category_content">'
+    	    		    +'  <div class="category_content_big"><a href="before_car_list.html?type='+escape(parent_arr[y].title)+' ">'+parent_arr[y].title+'</a></div> <ul>'
+    		 		 for (var u in dataarr) {
+    		 			 if(dataarr[u].parentId===parent_arr[y].id){
+    		 				html+= '<li class="category_content_small">'
+    						 +' <a href="before_car_list.html?type='+escape(parent_arr[y].title)+' " > '+dataarr[u].title+'</a>'
+    								+' </li>';
+    			            }
+    		 		}
+    		 		html+='</ul></div>'
+    		 	}
+    		 	service_content.innerHTML=html;
+          }
+    	
+    	
+    	  get_promotion()
+    	  function  get_promotion(){
+    		  var dataarr=zw.ajax({url:"../car_query",parameter:{whether_home:'是否首页',current:1 }}).data; 
+    		  var content= document.getElementById('promotion');
+    		  content.innerHTML="";
+			  for(var i=0;i<dataarr.length;i++){
+	    		 
+				  content.innerHTML +='<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">'
+					  +'<a class="list_img" href="./before_car_details.html?id='+dataarr[i].id+'" >'+decodeURIComponent(dataarr[i].image).replace("||","")+'</a>'
+					  +' <p><a href="./before_car_details.html?id='+dataarr[i].id+'">'+dataarr[i].title+'</a></p>'
+					  +' <p>底盘品牌：'+dataarr[i].related_car_site+'</p>'
+					  +'  <p>发动机马力：'+dataarr[i].horsepower+'</p>'
+					  +'   <p>价格：'+dataarr[i].price+'</p>'
+					  +'  </div>'
+	    	  }
+    	  }
+    	  
+    	  
+    	  //配件
+    	  get_accessories()
+    	  function  get_accessories(){
+    		  var dataarr=zw.ajax({url:"../parts_query",parameter:{whether_home:'是否首页',current:1 }}).data; 
+    		  var content= document.getElementById('accessories');
+    		  content.innerHTML="";
+			  for(var i=0;i<dataarr.length;i++){
+				  content.innerHTML +='<div style="width:20rem;height:20rem;font-size:1.2rem;  text-align: center;border: 1px #e6e6e6 solid;margin-top:2px;">'
+					  +'<a class="list_img" href="./before_parts_details.html?id='+dataarr[i].id+'" >'+decodeURIComponent(dataarr[i].image).replace("||","")+'</a>'
+					  +' <p><a href="./before_parts_details.html?id='+dataarr[i].id+'">'+dataarr[i].title+'</a></p>'
+					  +'  </div>'
+	    	  }
+    	  }
+     	  get_news('industry_news','行业动态')
+     	   get_news('special_car_evaluation','专汽评测')
+     	    get_news('promotion_shopping_guide','促销导购')
+     	     get_news('keep_a_car_with_a_car','用车养车')
+     	      get_news('policies_and_regulations','政策法规')
+     	       get_news('special_car_topic','专汽话题')
+    	  function  get_news(id,type){
+    		  var dataarr=zw.ajax({url:"../news_query",parameter:{whether_home:'是否首页',type,current:1 }}).data; 
+    		  var content= document.getElementById(id);
+    		  content.innerHTML="";
+			  for(var i=0;i<dataarr.length;i++){
+	    		 
+				  content.innerHTML +='<p class="news_title"><a href="before_news_details.html?id='+dataarr[i].id+'" target="_blank">'+decodeURIComponent(dataarr[i].title)+'</a></p>'
+	    	  }
+    	  }   
+    	
+      
+      </script>
+</body>
+</html>

@@ -1,0 +1,1078 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>惠购专用车网，省钱-省时-省心</title>
+<style type="text/css">
+<script src="zw.js"></script>
+*{
+border:0px;
+margin: 0px;
+padding: 0px;
+}
+div{
+border:0px solid red;
+}
+
+
+@charset "utf-8";
+/*面包屑导航*/
+.mianbaoxie_nav { border-bottom: 2px solid #FF6600; height: 30px; position: relative; }
+.container.container_top .mianbaoxie_nav .container_1200.m_center { width: 1200px; height: 30px; }
+.show_pro .show_left .show_tu { width: 500px; height: 360px; background-color: #FFFFFF; text-align: center; margin-top: 20px; }
+.mianbaoxie_nav .container_1200.m_center .mianbaoxie_text { padding-left: 20px; background-image: url(http://images.17350.com/images/title_bj.png); background-repeat: no-repeat; background-position: 5px 4px; }
+.zhanshi { height: 495px; width: 100%; background-image: url(http://images.17350.com/images/tianchong.png); }
+.zhanshi { width: 1200px; margin: 0 auto; height: 495px; }
+.zhanshi .show_left { width: 500px; height: 495px; float: left; display: inline-block; }
+.zhanshi .show_rihgt { width: 630px; height: 390px; float: left; padding: 40px 0px 0px 50px; display: inline-block; margin: 20px 0px 0px 20px; background-color: #FFFFFF; border-radius: 2px; }
+.zhanshi .show_rihgt h1 { font-size: 24px; display: inline-block; color: #313131; padding-bottom:15px; font-weight: bold; width:100%; }
+.zhanshi .show_rihgt p { font-size: 12px; color: #FF6600display: inline-block;
+padding-bottom:10px; }
+.zhanshi .show_rihgt span { padding-bottom:10px; display:block; }
+.share_baidu { padding-top:10px; }
+.preview { width: 500px; height: 475px; margin-top: 20px; }
+/* smallImg */
+.smallImg { position: relative; height: 80px; margin-top: 15px; background-color: #FFFFFF; width: 500px; overflow: hidden; float: left; border-radius: 2px; }
+.scrollbutton { width: 32px; height: 80px; overflow: hidden; position: relative; float: left; cursor: pointer; }
+.scrollbutton.smallImgUp, .scrollbutton.smallImgUp.disabled { background-repeat: no-repeat; background-image: url(http://images.17350.com/images/prev.jpg); width: 32px; height: 80px; background-position: 0px -8px; }
+.scrollbutton.smallImgDown, .scrollbutton.smallImgDown.disabled { background-repeat: no-repeat; background-image: url(http://images.17350.com/images/next.jpg); margin-left: 470px; margin-top: -80px; width: 32px; height: 80px; background-position: 0px -8px; }
+#imageMenu { height: 80px; width: 445px; overflow: hidden; float: left; }
+#imageMenu li { height: 80px; width: 100px; overflow: hidden; float: left; text-align: left; margin-left: 6px; }
+#imageMenu li img { width: 100%; height: 80px; cursor: pointer; }
+#imageMenu li#onlickImg img { width:100%; height:80px; }
+#imageMenu li:hover { height: 76px;border: 1.5px solid orange; }
+/* bigImg */
+.bigImg { position: relative; float: left; width: 500px; height: 335px; overflow: hidden; text-align: center; background-color: #FFFFFF; border-radius: 2px; }
+.bigImg #midimg { width: 500px; height: 333px;}
+.bigImg #winSelector { width:235px; height:210px; }
+#winSelector { position:absolute; cursor:crosshair; filter:alpha(opacity=15); -moz-opacity:0.15; opacity:0.15; background-color:#000; border:1px solid #fff; }
+/* bigView */
+#bigView { position: absolute; border: 1px solid #959595; overflow: hidden; z-index: 999; width: 500px; height: 455px; }
+#bigView img { position:absolute; }
+.canshu { margin-top: 0; margin-right: auto; margin-left: auto; width: 1200px; position: relative; height: auto; }
+.che_btn0 { width: 300px; height: 40px; }
+.che_btn1 { width: 100px; height: 40px; border-radius: 2px; background-color: #313131; display: inline-block; text-align: center; line-height: 40px; color: #FFFFFF; }
+.che_btn0 li {width: 120px;float:left;text-align:center;margin-right: 20px;}
+.che_btn0 li input:hover {color: #EEEEEE; background-color: #808080; }
+.che_btn0 li input {display: inline-block; text-align: center; line-height: 40px; background-color: #ff5252; color: #FFFFFF; border-radius: 2px; margin-right: 20px; border:0;cursor:pointer;font-family:"微软雅黑";padding: 0px 10px;}
+.canshu .canshu_left { width: 300px; float: left; display: inline-block; border-radius: 2px; clear: both; }
+.canshu .canshu_right { width: 880px; float: left; margin-left: 20px; display: inline-block; background-color: #FFFFFF; }
+.canshu .canshu_left .liulan_title { width: 280px;  background-color: #EEEEEE; border-top: 2px solid #313131; clear: both;background-image: url(http://images.17350.com/images/title_bj.png); background-repeat: no-repeat; background-position: 5px 18px; padding-left: 20px; line-height: 50px; height: 50px; }
+.canshu .canshu_left .liulan { margin-bottom: 20px; clear: both; width: 300px; float: left; background-color: #FFFFFF; }
+.liulan_che .liulan_list_car li { width: 286px; height: 355px; margin: 0 auto; display: inline-block; border: 2px solid #F5F5F5; }
+.list_car li {margin:10px; border:1px solid #f5f5f5; display:block;}
+.list_car img { width: 260px; padding:0px 10px; }
+.liulan .liulan_che .liulan_list_car { width: 300px; text-align: center; display: inline-block; }
+.canshu .canshu_left .contact { margin-bottom: 20px; clear: both; width: 300px; float: left; background-color: #FFFFFF; border-top:2px solid #de0000; }
+.canshu .canshu_left .contact .dian { margin:5px; border:2px solid #ededed; padding: 30px 40px 30px 100px;  -moz-border-radius:2px; border-radius:2px; background: url(http://images.17350.com/images/dian_icon.png) 40px 26px no-repeat; }
+.canshu .canshu_left .contact .dian span { font-size:12px; color:#313131; }
+.canshu .canshu_left .contact .dian p { padding-bottom:10px; font-weight:bold; }
+.canshu .canshu_left .contact .dian .iphone { color:#de0000; font-size:18px; }
+.canshu .canshu_left .contact .dian .dian400 { color:#de0000; font-size:26px; margin-left:-55px; }
+.canshu .canshu_right .canshu_boder { border: 1px solid #F5F5F5; margin-top: 60px; margin-right: auto; margin-left: auto; margin-bottom: 10px; width: 860px; }
+.canshu_right .canshu_boder .canshu_nav { width: 880px; height: 50px; }
+.canshu .canshu_right .canshu_nav { width: 880px; height: 50px; border-top: 2px solid #313131; background-color: #eeeeee; position: absolute; top: 0px; }
+.canshu_right .canshu_nav a { width: 100px; display: inline-block; height: 50px; text-align: center; line-height: 50px; }
+.canshu_right .canshu_nav a:hover { background-color: #FF6706; color:#fff; }
+.canshu_right .canshu_boder #liangdian { margin: 20px 0px; }
+.liangdian_title { height: 50px; text-align: left; line-height: 50px; padding-left: 20px; font-size: 18px; font-weight: bold; color: #313131;padding-top: 20px; padding-bottom: 20px; }
+.liangdian_title em {width:4px; height:12px; margin:0px 10px; display:inline-block;border-radius:4px;*margin-top:-15px;background:#ff6706;}
+.liangdian_title a {font-size: 18px; font-weight: bold; color: #313131;}
+.ce { display: block; width: 880px; height: 50px; background-color: #EEEEEE; top: 0px; border-top: 2px solid #313131; }
+.ce li { float: left; }
+.ce_li { }
+.ce_li .ce_img2 { display:none; }
+.ce li a {color: #313131;display: block;cursor: pointer;/* width: 130px; */height:48px;text-align: center;line-height: 48px;padding: 0px 15px;}
+.ce li a:hover { color: #FFFFFF; background-color: #313131; border-top: 2px solid #FF6706; }
+.ce li .dqian { background:none }
+.ce_img1 { margin-top:-40px; }
+.ce2 { background-color: #EEEEEE; height: 50px; position: fixed; z-index: 5; top: 0px; margin-top: 0px; border-top: 2px solid #313131; width: 880px; }
+.ce2 li a { color: white; height: 48px; /*width: 120px;*/ }
+.ce2 .ce_li { }
+.ce2 .ce_li .ce_img2 { display:block; padding:5px 0px; }
+.ce2 .ce_li .ce_img { display:none; }
+.ce2 li a { color: #313131; }
+.ce2 li a:hover, .ce li .xz { background-color: #313131; color: rgba(255, 255, 255, 1.00); color:#fff;border-top: 2px solid #FF6706;}
+.canshu_boder .liangdian_img { margin: 20px auto; width: 100%; text-align: center; }
+table { border-collapse:collapse; border-spacing:0; }
+ul, li { list-style:none; }
+i, em { font-style:normal; }
+img { border: 0; }
+a { color:#666; wenben-decoration:none; }
+a:hover { color:#e02428; wenben-decoration:none; }
+.clearfix, .clear, .content { clear:both; zoom:1; }
+.clearfix:after, .clear:after, .content:after { clear:both; content:""; display:block; font-size:0; height:0; visibility:hidden; zoom:1; }
+p { color:#585858; font-size:15px; }
+.f, .fl { float:left; }
+.r, .fr { float:right; }
+.goods_detail_box { width: 740px; background-color: #FFFFFF; padding: 20px 30px; margin: 0 auto; overflow: hidden; }
+/*jieshao*/
+.jieshao { font-size:15px; color:#5d5d5d; line-height:24px; padding-bottom:20px; overflow:hidden; }
+.jieshao strong { font-size:20px; color:#f9031a; }
+.jieshao .wenben { width: 265px; line-height: 24px; float: left; padding-top: 20px; }
+.jieshao .wenben .title { height: 30px; line-height: 30px; font-size: 20px; color: #fff; padding-left: 5px; background-repeat: no-repeat; background-image: url(http://images.17350.com/images/titlebg.png); }
+.jieshao .wenben p { padding-top: 10px; /* [disabled]padding-right: 10px;
+*/ /* [disabled]padding-left: 25px;
+*/ padding-bottom: 5px; background: url(http://images.17350.com/images/xin.png) 0px 10px no-repeat; }
+.jieshao .img { width: 440px; float: right; text-align: center; }
+.jieshao .img img { width: 460px; }
+.fl20 { padding-left:20px; }
+.titlex { padding-bottom:40px; background: url(http://images.17350.com/images/titbj.jpg) no-repeat; position:relative; width:190px; height:120px; margin:0 auto; }
+.xfz { font-size:9px; color:#232323; }
+.x37 { font-size:37.6px; color:#232323; }
+.xyw { position:absolute; top: 45px; width:190px; text-align:center; }
+.xziw { position:absolute; top: 50px; left: 20px; }
+/*dipan*/
+.dipan { width:100%; height:100%; clear:both; }
+.dipan .title { padding-bottom:40px; background:url(http://images.17350.com/images/dipan.png) no-repeat; width:190px; height:120px; margin:0 auto; }
+.dipan .titlex { }
+.dipan .img { float: left; width: 400px; }
+.dipan .wenben { float: right; line-height: 25px; width: 260px; }
+.dipan .wenben p { color:#585858; padding-left:30px; }
+.ptop15px { padding-top:15px; }
+.p15px { padding-top:15px; padding-bottom:15px; }
+/*dongli*/
+.bjl { background:#f06428 url(http://images.17350.com/images/yuanbj.jpg) no-repeat 0 0; height:40px; float:left; padding:0 0 0 15px; }
+.bjr { background:url(http://images.17350.com/images/yuanbj.jpg) no-repeat right 0; height:40px; line-height:40px; padding:0 15px 0 0; }
+.pz21px { color:#fff; font-size:21px; font-weight:bold; }
+.dongli { width:100%; height:100%; clear:both; padding-top: 50px; }
+.dongli .title { background:url(http://images.17350.com/images/donglibj.jpg) no-repeat; width:190px; height:120px; margin:0 auto; padding-bottom:60px; }
+.dongli .img { float:right; width:385px; }
+.dongli .wenben { width: 280px; float: left; line-height: 24px; }
+.dongli .wenben .p21px { color:#fff; font-size:21px; background:url(http://images.17350.com/images/donglizi1.jpg) no-repeat; height:40px; font-weight:bold; line-height:40px; padding-left:10px; }
+.pdd15px { padding-top:15px; padding-bottom:15px; }
+.dongli .dongli2:after { clear:both; padding-top:50px; content:"\0020"; display:block; height:0; visibility:hidden; zoom:1; }
+.dongli .dongli2 { clear:both; padding-top:50px; zoom:1; }
+.dongli .dongli2 .img { float:left; }
+.dongli .dongli2 .wenben { float:right; }
+.dongli .dongli2 .wenben .p21px { background:url(http://images.17350.com/images/donglizi2.jpg) no-repeat; }
+.dongli .dongli3 { clear:both; padding-top:30px; }
+.dongli .dongli3 .wenben .p21px { background:url(http://images.17350.com/images/donglizi3.jpg) no-repeat; padding-left:15px; }
+.dongli .dongli4:after { clear:both; padding-top:50px; content:"\0020"; display:block; height:0; visibility:hidden; zoom:1; }
+.dongli .dongli4 { clear:both; padding-top:50px; zoom:1; }
+.dongli .dongli4 .img { float:left; }
+.dongli .dongli4 .wenben { float:right; }
+.dongli .dongli4 .wenben .p21px { background:url(http://images.17350.com/images/donglizi2.jpg) no-repeat; }
+/*shangzhuang*/
+.shangzhuang { clear:both; width:100%; height:100%; }
+.shangzhuang .title { height:120px; width:190px; background:url(http://images.17350.com/images/shangzhuangbj.jpg) no-repeat; margin:0 auto; padding-bottom:10px; }
+.shangzhuang .img { width:100%; wenben-align:center; text-align:center; }
+.shangzhuang .wenben .title1 { background:#f06427; font-size:25px; color:#fff; float:right; width:120px; height:40px; line-height: 40px; padding-left: 25px; margin-top:60px; }
+.shangzhuang .wenben .txt { clear: both; width: 280px; float: left; line-height: 24px; padding-top: 60px; }
+.ptop30 { padding-top:30px; }
+.shangzhuang .wenben .txtimg { float: right; width: 420px; padding-top: 30px; }
+.shangzhuang .wenben .txtimg P { width:190px; line-height:30px; padding-top:8px; padding-left:20px; float:left; }
+.shangzhuang .wenben .txtimg span { float:left; padding-left:15px; width:190px; line-height:30px; padding-top:5px; }
+.shangzhuang .wenben .txtimg span img { border:2px solid #f06e36; }
+/*fangwei*/
+.fangwei { clear:both; height:100%; }
+.fangwei .title { height:120px; padding-bottom:50px; width:190px; background:url(http://images.17350.com/images/fangweibj.jpg) no-repeat; margin:0 auto; }
+.fangwei .img { width:100%; margin:auto 0; background: url(http://images.17350.com/images/fangweibj2.jpg) no-repeat; background-position:50% 50%; margin-top:-30px; }
+.fangwei img { width:700px; display:block; margin:0 auto; }
+.fangwei .img span { float: left; width: 330px; padding: 35px 0 35px; }
+.fangwei .img span.fr { float:right; }
+.fangwei .img span img { border:2px solid #f06e36; width:330px; }
+/*gzstate*/
+.gzstate { clear:both; width:100%; }
+.gzstate .title { height:120px; width:190px; background:url(http://images.17350.com/images/gongzuo.jpg) no-repeat; margin:0 auto; padding-bottom:40px; }
+.txtimg { width: 100%; float: left; }
+.gzstate span { float:left; width:250px; padding-right:20px; padding-bottom: 55px; line-height: 28px; }
+.gzstate span p { font-size:14px; }
+.gzstate span img { border:2px solid #f06e36; width:250px; }
+/*xitong*/
+.xitong { clear:both; width:100%; margin:0 auto; }
+.xitong .title { height:120px; width:190px; background:url(http://images.17350.com/images/xitongbj.jpg) no-repeat; margin:0 auto; padding-bottom:20px; }
+.xitong .img { width:100%; margin:0 auto; padding-top: 35px; }
+.xitong .img span { float:left; padding-left:20px; }
+.xitong .img .bd img { border:2px solid #f06e36; }
+.xitong .img .bd { padding-right:30px; }
+/*chuangye*/
+.chuangye { clear:both; width:100%; padding-top:10px; }
+.chuangye .cygs { width: 330px; float: left; padding-bottom: 10px; }
+.chuangye .cygs p { font-size: 14px; }
+.chuangye .cygs strong { color:#f65600; width:100%; float:left; }
+.chuangye .cygs span { width:360px; float:left; }
+.chuangye .cygs img { border: 2px solid #f06e36; width: 330px; }
+.cydz { color:#f0723c; font-size:16px; text-decoration:none; }
+.chuangye, .jiashi .fl { }
+/*jiashi*/
+.jiashi { clear:both; width:100%; padding-top:10px; }
+.jiashi .cygs { width:380px; float:left; padding-bottom:10px; }
+.jiashi .cygs p { font-size:14px; }
+.jiashi .cygs span { width:310px; float:left; }
+.jiashi .cygs img { border:none; }
+/*chuangye
+.chuangye,.jiashi{clear:both;width:100%;padding-top:10px;}
+.chuangye,.jiashi .cygs{ width:380px; float:left;padding-bottom:10px;}
+.chuangye,.jiashi .cygs  p{font-size:14px;}
+.chuangye .cygs strong {color:#f65600;width:100%;float:left;}
+.chuangye,.jiashi .cygs span {width:310px;float:left;}
+.chuangye .cygs img{border:2px solid #f06e36;}
+.cydz{ color:#f0723c; font-size:16px; text-decoration:none;}
+.chuangye,.jiashi .fl{padding-right:40px;}
+*/
+
+/*lajiState*/
+.lajiState { clear:both; width:100%; font-size:15px; color:#f06427; }
+.lajiState .titlex { margin-top:10px; }
+.lajiState .lajtxtm p { font-size:15px; color:#f06427; }
+.lajiState .lajtxts { }
+.lajiState .ljbj { background:url(http://images.17350.com/images/rightjt.jpg) no-repeat 99% bottom; }
+.lajiState .txtimg img { width:220px; }
+.lajiState .lajtxts ul li { float:left; padding-right:30px; }
+.lajiState .lajtxts ul li img { border:2px solid #f06e36; }
+.lajiState .lajtxtx ul li { float:left; padding-right: 35px; padding-left: 5px; }
+.lajiState .lajtxts ul li { float:left; padding-right: 35px; padding-left: 5px; }
+.lajiState .lajtxtx ul li img { border:2px solid #f06e36; }
+.lajiState .lajtxtm { float:left; clear:both; }
+.lajiState .ljmleft { float:left; width:180px; text-align:center; line-height:2; padding-left:180px; }
+.lajiState .ljmleft .p1 { border-bottom:2px solid #f06e36; }
+.lajiState .ljmright { float:left; padding-left:180px; }
+.lajiState .ljmrle { float:left; background:url(http://images.17350.com/images/xiajiantou.jpg) no-repeat left center; border-right:2px solid #f06e36; height:50px; line-height:50px; padding-left:35px; padding-right:15px; margin-top:6px; }
+.lajiState .ljmrr { float:left; }
+.lajiState .ljmrr p { line-height:2; padding-left: 15px; }
+.lajiState .ljbjt { background:url(http://images.17350.com/images/rightjt.jpg) no-repeat 99% top; }
+/*fonter*/
+.fonter { background:url(http://images.17350.com/images/weibu.jpg) no-repeat; height:33px; width:100%; margin:0 auto; background-position: 50% 0; }
+.chuangye.clearfix .txtimg .cygs.fr { margin-left: 75px; }
+.chuangye.clearfix .txtimg .cygs.fl { width: 330px; }
+.canshu_left .liulan .liulan_che { }
+.canshu_right .canshu_boder .canshu_table { margin: 20px auto; width: 740px; border: 4px solid #313131; border-radius: 2px; }
+.canshu_right .canshu_boder .canshu_table table { width:740px; }
+.canshu_right .canshu_boder .canshu_table tr { color:#313131; line-height:40px; }
+.canshu_right .canshu_boder .canshu_table tr td { padding-left:5px; width:8%; }
+.tablebg { font-weight:bold; }
+.tablebg p { color:#FF6600; }
+.tablebg1 { background:#f8f8f8; }
+.canshu_right .canshu_boder #juticanshu { margin-top: 20px; }
+.canshu_right .canshu_boder #chexingpince { margin: 20px 0px; }
+.che_pingce {width:100%;overflow:hidden;position:relative;}
+.che_pingce .liangdian_title {padding-left:0px;}
+.canshu_boder .pincetuwen { margin: 0 auto; width: 740px; height: 212px; background-color: #eee; border-radius: 2px; }
+.pincetuwen .img.f_left { width: 318px; height: 212px; overflow:hidden; }
+.pincetuwen .img.f_left a { width: 318px; height: 212px; text-align:center; vertical-align:middle; display:table-cell; }
+.pincetuwen .img.f_left img { width: 318px; display:inline; vertical-align:middle; max-width:none; opacity:0.9; }
+.pincetuwen .txt.f_right { width: 390px; height: 212px; float: left; margin-left: 30px; }
+.pincetuwen .txt.f_right .pince_title { color: #313131; font-size: 18px; font-weight: bold; display: block; padding-right: 10px; margin-top: 20px; padding-bottom:10px; }
+.txt.f_right .pince_title:hover { color:#FF6706; }
+.pincetuwen .txt.f_right .date { margin-top: 20px; margin-bottom: 20px; background:url(http://images.17350.com/images/index_icon.png) no-repeat -258px -264px; padding-left:20px; }
+.pincetuwen .txt.f_right .reader { margin-left: 50px; margin-top: 20px; margin-bottom: 20px; background:url(http://images.17350.com/images/icon.png) no-repeat scroll -140px -7px; padding-left:20px; }
+.pincetuwen p { margin-top:30px; }
+.pincetuwen .img.f_left,.pincetuwen .txt.f_right{margin-bottom:30px;}
+.liucheng_tu { margin-top: 0; margin-right: auto; margin-left: auto; margin-bottom: 4px; width: 740px; }
+.xuzhi_txt { margin-top: 0; margin-right: auto; margin-left: auto; margin-bottom: 50px; width: 740px; }
+.xuzhi_txt p { color: #808080; text-indent:2em; line-height:28px; }
+.canshu_boder .360kanche_img { width: 740px; margin: 0 auto; height: 400px; }
+/*订单*/
+.dinggou { width: 430px; background-color:#FFFFFF;filter:alpha(opacity=90);opacity:0.9; padding:20px; overflow:hidden; display:none; }
+
+/*清障车详细*/
+.qzc_title, .pro_title { font-size:28px; color:#040c18; font-weight:bold; }
+.pro_text { padding:0px 30px; }
+.bg_title { width:auto; height:28px; position:relative; top:-33px; font-size:18px; color:#ffffff; float:left; padding:0px 10px; }
+.fbg_title { width:auto; height:28px; position:relative; top: -240px; font-size:18px; color:#96630d; float: right; padding:0px 10px; background: #fff;}
+.bg_title1 { width:auto; height:20px; position:relative; top:-26px; left:0px; font-size:14px; color:#ffffff; float:left; padding:0px 5px; }
+/*方位*/
+.fangwei {}
+.fangwei ul { padding:20px 0px; overflow:hidden; background:url(http://images.17350.com/images/shizijia.png) no-repeat; background-position:50% 48%; width:100%; }
+.fangwei li { width:350px; float:left; padding-bottom:20px; margin:0 0 0 40px; }
+.fangwei li img { width:350px; height:235px; }
+.fangwei li.first { margin:0; }
+.fangwei p { text-align:right; }
+.shizijia { position:relative; left:288px; top:-310px; float:left }
+/*底盘*/
+.dipan, .xuanzhuang, .gongzuo, .shangzhuang { width:100%; overflow:hidden; }
+.dipan ul { overflow:hidden; }
+.dipan li, .xuanzhuang li, .gongzuo li, .shangzhuang li { width:350px;  float:left; margin:0 0 0 40px; }
+.dipan li img, .xuanzhuang li img, .gongzuo li img, .shangzhuang li img { width:350px; }
+.dipan li.first, .xuanzhuang li.first, .gongzuo li.first, .shangzhuang li.first { margin:0;clear:both; }
+.gongzuo p { text-align:left; }
+.dipan_text, .xuanzhuang_text { width:300px; position:relative; left:30px; padding-bottom:20px;}
+.dipan_text span, .xuanzhuang_text span, .pro_text span, .shangzhuang_text span, .gongzuo span, .gouzao span { font-size:22px; color:#040c18; }
+.dipan_tex p, .xuanzhuang_text p, .shangzhuang_text p, .gongzuo_text p { font-size:13px; color:#808080; position:relative; top:10px; }
+/*上装部分*/
+.shangzhuang_img { width:380px; }
+.shangzhuang_img img { padding-bottom:5px; }
+.shangzhuang_text { width:290px; padding:0px 30px; }
+/*上装部分-平板*/
+.pinban { background:url(http://images.17350.com/images/dlkqzc_pinban.jpg) no-repeat; background-size:100% 100%; height:372px; }
+/*上装部分-灯架*/
+.dengjia { background:url(http://images.17350.com/images/dlkqzc_dengjia.jpg) no-repeat; background-size:100% 100%; height:350px; }
+/*上装-上装部件*/
+.gouzao {overflow:hidden;}
+.gouzao li{width: 177px;float:left;margin-right:25px;height:130px;margin: 0;padding-bottom: 5px;}
+.gouzao li img {width: 170px;height:130px;}
+.gouzao .big_img {width:530px;height:300px;}
+.gouzao .big_img img {width:530px;height:300px;}
+.gouzao .gouzao_l { width:330px; float:left; }
+.gouzao .gouzao_r { width:400px; float:right; }
+.gouzao .gouzao_r .pro_title, .gouzao .gouzao_r span { padding-left:80px; }
+.gouzao .gouzao_r img { padding-top:30px; }
+/*标题*/
+.shc_title { padding-bottom:20px; background: url(http://images.17350.com/images/titbj.jpg) no-repeat; position:relative; width:190px; height:120px; margin:0 auto; }
+.shc_title .small_size { font-size:9px; color:#232323; position:absolute; top: 45px; width:190px; text-align:center; }
+.shc_title .big_size { font-size:37.6px; color:#232323; position:absolute; top: 55px; left: 20px; }
+.shc_column_title { background:#f06427; font-size:18px; color:#fff; height:40px; line-height: 40px; padding:0px 25px; -moz-border-radius:10px; border-radius:10px; }
+/*dipan*/
+.dipan { width:100%; height:100%; float:left; }
+.dipan .title { padding-bottom:40px; background:url(http://images.17350.com/images/dipan.png) no-repeat; width:190px; height:120px; margin:0 auto; }
+.dipan img { width:340px; }
+.dipan .txt { float: right; line-height: 25px; width:370px; }
+.dipan .txt p { color:#585858; padding:0px 0px 20px 20px; }
+/*dongli*/
+.dongli { width:100%; height:100%; float:left; padding-top:20px; }
+.dongli p { width:100%; float:left; }
+.dongli img { width:250px; }
+.dongli .title { background:#f06428; height:40px; line-height:40px; float:left; margin-bottom:10px; padding:0px 15px; color:#fff; font-size:21px; font-weight:bold; -moz-border-radius:10px; border-radius:10px; }
+.dongli .img { width:380px; }
+.dongli .txt { width: 300px; line-height: 24px; }
+.dongli .txt p { padding-top:10px; }
+.dongli .fadongji { padding-top:20px; float:left; width:100%; }
+.dongli .fadongji ul { width:120px; float:right; }
+.dongli .fadongji ul li { font-size:18px; color:#f06428; background:url(http://images.17350.com/images/yuan_icon.png) left top no-repeat; padding-left:25px; }
+.dongli .fadongji .fadongji_1, .fadongji_2 { width:100%; float:left; padding-bottom:30px; }
+.dongli .biansuxiang { margin-top:50px; float:left; width:100%; }
+.dongli .biansuxiang img { width:340px; }
+.dongli .biansuxiang .txt { width:350px; }
+/*shangzhuang*/
+.shangzhuang { float:left; width:100%; height:100%; }
+.shangzhuang .title { background:#f06427; font-size:25px; color:#fff; height:40px; line-height: 40px; padding:0px 25px; margin-top:40px; }
+.shangzhuang .img { width:100%; text-align:center; }
+.shangzhuang .xuanzhuang .txt { clear: both; width: 280px; float: left; line-height: 24px; padding-top: 60px; }
+.shangzhuang .xuanzhuang .txt p { padding-bottom:20px; }
+.shangzhuang .gongdian ul { overflow:hidden; float:left; width:100%; }
+.shangzhuang .gongdian ul li { width:220px; float:left; padding:20px 25px 20px 0px; margin:0; }
+.shangzhuang .gongdian img { width:220px; }
+.shangzhuang .gongdian span { font-size:18px; line-height:30px; color:#171717; padding-top:5px; float:left; }
+.shangzhuang .xuanzhuang .txtimg { float: right; width: 420px; padding-top: 30px; }
+.shangzhuang .xuanzhuang .txtimg P { width:190px; line-height:30px; padding-top:8px; padding-left:20px; float:left; }
+.shangzhuang .xuanzhuang .txtimg span { float:left; padding-left:15px; width:190px; line-height:30px; padding-top:5px; }
+.shangzhuang .xuanzhuang .txtimg span img { width:185px; height:95px; border:2px solid #f06e36; }
+/*waiguan*/
+.waiguan { clear:both; height:100%; }
+.waiguan .waiguan_size { padding-bottom:20px; }
+.waiguan .waiguan_size img { width:730px; }
+.waiguan .waiguan_size p { float:right; }
+.waiguan .title { height:120px; padding-bottom:50px; width:190px; background:url(http://images.17350.com/images/waiguanbj.jpg) no-repeat; margin:0 auto; }
+.waiguan .img { width:100%; margin:auto 0; background: url(http://images.17350.com/images/fangweibj2.jpg) no-repeat; background-position:50% 50%; margin-top:-30px; }
+.waiguan .img span { float: left; width: 330px; padding: 35px 0 35px; }
+.waiguan .img span.fr { float:right; }
+.waiguan .img span img { border:2px solid #f06e36; width: 330px; }
+/*chuangye*/
+.chuangye { margin:0 auto; width:740px; }
+.chuangye li { width: 330px; float: left; padding: 0px 20px 20px 20px; }
+.chuangye li p { font-size: 14px; }
+.chuangye li strong { color:#f65600; width:100%; float:left; }
+.chuangye li span { width:360px; float:left; }
+.chuangye li img { border: 2px solid #f06e36; width: 330px; }
+.cydz { color:#f0723c; font-size:16px; text-decoration:none; }
+/*表格参数*/
+.canshu_table { margin: 20px auto; width: 740px; border: 4px solid #313131; border-radius: 6px; }
+.canshu_table table { width:740px; }
+.canshu_table tr { color:#313131; line-height:40px; height:40px; }
+.canshu_table p { line-height:30px;color:#333; }
+.canshu_table tr td { width:100px; padding-left:20px;word-break:break-all; }
+.canshu_table tr td:nth-child(2n+1) {background:#f8f8f8;font-weight:bold;}
+.tablebg1 { border-left:2px solid #313131; background:#f8f8f8; font-weight:bold; }
+.tablebg p { padding:0px 0px; line-height:10px; color:#ff8045; font-weight:bold; }
+/*配件详细内容*/
+.pj_detail { width: 860px; margin:30px; }
+.pj_title { height: 50px; text-align: left; line-height: 50px; padding-left: 20px; font-size: 18px; font-weight: bold; color: #313131; background-image: url(http://images.17350.com/images/tab_title.jpg); background-repeat: no-repeat; background-position: 2px 32px; margin-bottom: 20px; padding-top: 20px; }
+.pj_detail .xuzhi_txt { width:770px; padding:0px 20px; }
+/*配件介绍*/
+.pj_jieshao { width: 770px; display:block; font-size:15px; color:#5d5d5d; line-height:24px; padding:0px 20px; overflow:hidden; }
+.jieshao_txt { width:385px; float:left; text-indent:30px; margin-bottom: 30px; font-size:16px; line-height:30px; }
+.jieshao_img { width:355px; float:right; }
+.jieshao_img img { width:355px; }
+/*配件表格*/
+.pj_table { margin: 0px 20px; width: 770px; border: 4px solid #313131; border-radius: 6px; text-align:center; }
+.pj_table table { bordercolor:#808080; width: 770px; }
+.pj_table tr { color:#313131; line-height:40px; height:40px; }
+.pj_table tr td { width:100px; }
+.pj_table strong { font-weight:bold; color:#000; font-size:14px; }
+/*配件展示*/
+.zhanshi_img { width:760px; margin:0px 20px; overflow:hidden; }
+.zhanshi_img li { width:369px; float:left; height:246px; }
+.zhanshi_img li img { width:368px; overflow:hidden; }
+/*适用车型*/
+.shiyong_car { overflow: hidden; width:770px; padding-top: 18px; margin:0px 20px; }
+.jiantou { padding:80px 0px 0px 10px; }
+.shiyong_car ul { width: 660px; margin-left: 15px; display: inline }
+.shiyong_car ul li { overflow: hidden; width: 205px; FLOAT: left; display: inline; margin-right: 15px; background:#fff; border:1px solid #eeeeee; -moz-border-radius:2px; border-radius:2px; }
+.shiyong_car ul li .img { width:200px;height:150px;overflow:hidden; }
+.shiyong_car ul li .img img { width:200px; padding:20px 5px; }
+.shiyong_car ul li .text { padding:10px 10px 10px 0px; text-align:center; }
+.shiyong_car ul li .text a { font-size:12px; }
+.shiyong_car ul li span { overflow: hidden; height:28px; text-align: center; display: block; line-height:28pxpx; color:#ff0000; }
+/*切换标签*/
+.menu { height:28px; border-right:#ccc solid 1px; font-size:14px; }
+.menu li { float:left; width:99px; text-align:center; line-height:28px; height:28px; cursor:pointer; border-left:#ccc solid 1px; border-bottom:#ccc solid 1px; color:#666; overflow:hidden; background:#E0E2EB; }
+.menu li.off { background:#fff; color:#336699; font-weight:bold; border-bottom:none; }
+.menudiv { border: 1px solid #F5F5F5; margin-top: 60px; margin-right: auto; margin-left: auto; margin-bottom: 10px; width: 860px; }
+.pro_tab { background-color: #EEEEEE; height: 50px; z-index: 5; margin-top: 0px; border-top: 2px solid #313131; width: 880px; }
+.pro_tab li { color: #313131; height: 48px; line-height:48px; width: 96px; float:left; text-align:center; }
+.pro_tab li a { color: #313131; }
+.pro_tab li.off { background:#313131; color:#fff; font-weight:bold; border-bottom:none; border-top:2px solid #ff4a4a; }
+.pro_detail { width:798px; border:2px solid #eeeeee; margin:0 auto; padding:20px; overflow:hidden;}
+.pro_detail .title { height:50px; line-height:50px; background:url(http://images.17350.com/images/title_icon.png) left no-repeat; padding-left:20px; font-size:18px; font-weight:bold; color:#313131; }
+.button { width:100px; height:35px; line-height:35px; background:#ff4a4a; margin:20px 24px; color:#fff; display:block; text-align:center; }
+.button a { color:#fff; }
+/*评价*/
+.statement { border-top:2px solid #eeeeee; border-bottom:1px solid #eeeeee; padding:20px 24px; background:#fdfdfd; line-height:24px; }
+.zixun_class { border-bottom:1px solid #eee; padding:10px 24px; }
+.zixun_class span { padding-right:30px; color:#313131; }
+.zixun_class label { padding-right:10px; }
+.zixun_box textarea { margin-top:20px; margin-left:24px; display:block; border:1px solid #dcdcdc; width:670px; height:260px; padding:10px; color:#dcdcdc; -moz-border-radius:2px; border-radius:2px; }
+.question_list { margin:30px 0px; border-top:2px solid #eeeeee; padding-top:20px; }
+.question_list ul { margin-left:20px; }
+.question_list ul li { width:100%; border-bottom:1px solid #f4f4f4; padding:20px 0px; }
+.question_list img { float:left; }
+.question_list .username { padding-left:80px; }
+.question_list .username .date { padding-left:20px; color:#808080; }
+.question_list .wenti { background:url(http://images.17350.com/images/wenti_box.png)no-repeat; width:630px; height:40px; color:#ff0000; padding-top: 10px; margin-top: 10px; margin-left: -10px; padding-left: 30px; }
+.question_list .reply { border:1px solid #dcdcdc; width:575px; padding:10px 20px; color:#808080; }
+/*翻页*/
+.pager { overflow:hidden; float:right; }
+.pager a { width:20px; height:20px; padding:0px 5px; background:#dcdcdc; color:#555555; margin-right:10px; }
+.pager a.on { background:#ff4a4a; color:#fff; }
+/*车型报价*/
+.tuijian_jxs { margin:20px 0px 0px 0px; }
+.tuijian_jxs .company_name { font-size:16px; font-weight:bold; border-bottom:2px solid #eeeeee; padding-left:15px; padding-bottom:15px; }
+.tuijian_jxs .address { padding:16px 14px; color:#8e8e8e; border-bottom:1px solid #eeeeee; }
+.tuijian_jxs .address span { padding-right:12px; }
+.tuijian_jxs .company_detail { padding:40px 16px; overflow:hidden; }
+.tuijian_jxs .company_detail .left { width:520px; float:left; }
+.tuijian_jxs .company_detail .right { width:200px; float:right; text-align:right; padding-top:10px; }
+.tuijian_jxs .company_detail span { display:block; padding:6px 0px; font-size:12px; }
+.tuijian_jxs .company_detail span.name { font-size:16px; color:#555555; }
+.tuijian_jxs .company_detail strong { font-size:16px; color:#ff4c4d; }
+.tuijian_jxs .company_detail .button { margin:10px 0px; color:#fff; }
+.tuijian_jxs .company_detail .right span { padding:8px 0px; }
+
+/*公司介绍*/
+.company_about{margin: 0px 20px;padding-bottom: 20px;}
+.company_about .title{border-bottom:2px solid #eeeeee; }
+.company_about img {padding: 40px 0px 20px 0px;}
+.company_about .text h3{margin: 130px 40px 8px 40px;text-align:center;font-size:18px;color:#ff0000;border-bottom:1px solid #888888;padding-bottom:5px;font-weight: normal;}
+.company_about .text strong {color: #888;font-size:18px;text-align:center;display: block;}
+.company_about  p{line-height:28px;}
+
+/*服务站*/
+.service_station { overflow:hidden; }
+.service_station .title { border-bottom:2px solid #eeeeee; }
+.service_station ul { overflow:hidden; }
+.service_station ul li { width:46%; float:left; border-bottom:1px solid #eeeeee; padding: 20px 15px; }
+.service_station ul li span { display:block; padding:8px 0px; color:#313131; }
+.service_station ul li span.name { font-size:16px; color:#313131; }
+.service_station ul li font { color:#ff4c4d; font-size:16px; }
+.service_station ul li span.address { color:#565656; }
+/*分站样式*/
+.top-head-bg { background-color:#F5F5F5; height:30px; width:100%; font-size:12px !important; }
+.top-head { width:1200px; margin:0 auto; }
+.top-welcome { line-height:30px; }
+.top-welcome-txt { margin-right:5px; float:left; color:#a2a2a2; font-size:12px; }
+.city { box-sizing: border-box; position: relative; font-size: 12px; color: #ff0000; margin-right: 16px; margin-left: 18px; margin-top:4px; float: left; width: 88px; height: 22px; border-radius: 2px; border: 1px solid #cecece; line-height: 22px; padding-right: 15px; }
+.city .J_city { font-size:12px; cursor: pointer; height: 20px; line-height:20px; overflow: hidden; color: #ff0000; }
+.city #J_city_show { width: 75px; text-align: center; }
+.city .J_hotcity { color: #FF5719; margin-left: 10px; cursor: pointer; }
+.city .active-city { background: #ff5517; color: #fff !important; }
+.dealer-name { color:#ff0000; font-size:12px; }
+.city span { display: block; float: left; }
+.city i { display: block; width: 10px; height: 6px; background: url(http://images.17350.com/images/city-chose.png) no-repeat; margin-top: 6px; cursor: pointer; position: absolute; right: 10px; }
+.city .city-open { position: absolute; top: 31px; z-index: 100000; width: 400px; overflow: hidden; border: 1px solid #FF581A; background: #fff; }
+.city .city-wrap { width: 730px; position: relative; height: 325px; }
+.city .area-box { position: absolute; width: 410px; height: 260px; background: #fff; padding: 20px; }
+.city .area-box .hot-city { border-bottom: 1px solid #ededed; color: #777; padding-bottom: 20px; font-size: 12px; }
+.city .area-box .hot-city .title { color: #777; margin-right: 15px; }
+.city .area-box .hot-city .hot-item { color: #FF5719; margin-left: 10px; cursor: pointer; }
+.city .area-box .area-city { margin-top: 20px; font-size: 12px; }
+.city .area-box .area-city .area-line .area { color: #777; padding-right: 15px; border-right: 1px solid #ededed; }
+.area-line { margin-bottom:10px; }
+.city .area-box .area-city .area-line .province-item { margin-left: 15px; color: #333; cursor: pointer; }
+.city .area-box .area-city .area-line .province-item:hover { color: #FF5719; }
+.city .city-box { width: 360px; padding: 20px; height: 140px; background: #fff; position: absolute; left: 362px; }
+.city .city-box .tit { border-bottom: 1px solid #ededed; padding-bottom: 20px; }
+.city .city-box .tit .city-return { display: block; background: url(http://images.17350.com/images/index/head-sprite.png) no-repeat 0 center; background-position: 0 -19px; padding-left: 12px; color: #999; float: left; line-height: 13px; height: 13px; font-size: 13px; cursor: pointer; }
+.city .city-box .tit .province { display: block; float: left; margin-left: 95px; height: 14px; font-size: 12px; line-height: 12px; color: #333; }
+.city .city-box .tit .city-close { display: block; float: right; width: 9px; height: 9px; background: url(http://images.17350.com/images/index/head-sprite.png) no-repeat; background-position: 0px -10px; margin-top: 5px; cursor: pointer; }
+.city .city-box .city-list { margin-top: 20px; }
+.city .city-box .city-list .city-item { display: block; margin-bottom: 10px; margin-right: 15px; font-size: 12px; color: #333; float: left; cursor: pointer; }
+.city .city-box .city-list .city-item:hover { color: #FF5719; }
+.hidden { display: none !important; }
+.jiameng { padding-left:180px; float:left; }
+.jiameng a { font-size:12px; }
+.logoin { margin-left: 5px; color:#a2a2a2; font-size:12px; line-height:30px; }
+.top-welcome-r { float:right; width:70px; }
+.juhe-dealer-phone { font-size: 16px; font-weight: bold; margin: 14px 10px; color: #ff0000; padding-left: 20px; background-image: url(http://images.17350.com/images/phone.png); background-repeat: no-repeat; background-size: auto auto; background-position: 0px 3px; width: 140px; height: 30px; float: right; }
+#sddm { float:left; margin-right:10px; }
+#sddm li { margin: 0; padding: 0; list-style: none; }
+#sddm li a { display: block; font-size:12px; color:#a2a2a2; text-align: center; text-decoration: none; line-height:31px; }
+#sddm li a:hover { color: #ff0000; }
+#sddm div { position: absolute; visibility: hidden; z-index:999999; margin: 0; padding: 0; border: 1px solid #808080; border-radius:2px; }
+#sddm div a { position: relative; display: block; padding:0 5px; text-align: center; text-decoration: none; background: #808080; color: #fff; }
+#sddm div a:hover { background: #313131; color: #FFF }
+.map { font-size:12px; background: url(http://images.17350.com/images/ico-arrow.png) no-repeat right; padding-right: 20px; margin-right: 20px; }
+.form-wrapper .input-mobile-wrapper { position: relative; width: 260px; margin-bottom: 10px; }
+.dinggou .close-btn { display: block; width: 20px; height: 20px; position: absolute; right: 20px; top: 20px; cursor: pointer; }
+.canshu-nav-on { background-color: #313131; border-top: 2px solid #FF6706!important; color:#fff !important; }
+.ce li a { color: #313131; display: block; cursor: pointer; /*width: 97px; */height:48px; text-align: center; line-height: 48px; }
+.ce li a:hover { color: #FFFFFF; background-color: #313131; border-top: 2px solid #FF6706; height:48px; }
+/*.ce {border:none;}*/
+.jilu-num { font-size:12px; color:#ff4a4a; }
+#tabbox { width:880px; overflow:hidden; margin:0 auto; }
+.tab_conbox { background-color:#FFFFFF; width:880px; border-top: none; }
+.tab_con { display:none; }
+.tabs { display: block; width: 880px; height: 50px; background-color: #EEEEEE; top: 0px; border-top: 2px solid #313131; }
+.tabs li { float:left; }
+.tabs li a { display: block; /*padding: 0 19px;*/ line-height:48px;color: #313131; display: block; cursor: pointer; /*width: 97px;*/ height:48px; text-align: center; line-height: 48px; }
+.tabs li a:hover { background: #313131; color:#fff; border-top:2px solid #ff4a4a; height:48px; }
+.tabs .thistab a { background: #313131; border-top: 2px solid #ff4a4a; color:#fff; height:48px; }
+#tabs a{position: relative;}
+#tabs span.jilu-num{position: absolute;top: -13px;right: 5px;}
+.tab_con { padding:20px 0px }
+.dipan ul.dpsty2 .first { float:right; }
+.dipan ul.dpsty2 li { margin:0; }
+.jilu-num { font-size:12px; color:#ff4a4a; }
+.pinfen { width:223px; height:26px; url(http://images.17350.com/images/grade/o_star.png) no-repeat 9999px 9999px;
+display:inline-block; font-size:18px; color:#ff4a4a; text-align:right; line-height:28px; }
+.pinjia { margin: 20px auto; width: 740px; border:1px solid #eee; border-radius: 2px; }
+.pinjia-user { background:url(http://images.17350.com/images/user.jpg) 0px 0px no-repeat; width:57px; height:55px; display:inline-block; float:left; }
+.pinjia th { font-size:14px; background-color:#fafafa; height:50px; width:25%; text-align:center; }
+.pinjia td { width:25%; height:50px; border-bottom:1px solid #fafafa; text-align:center; }
+.user-time span { line-height:116px; margin:10px; }
+.zonghe { font-size:18px; height:28px; padding-left:20px; margin:10px 0px 20px; }
+.renshu { line-height:20px; }
+.zonghe .pinfen { width:223px; height:26px; background:url(http://images.17350.com/images/grade/o_star.png) no-repeat 9999px 9999px; display:inline-block; font-size:18px; color:#ff4a4a; text-align:right; line-height:28px; }
+.user-time { width:740px; height:90px; padding-left:10px; }
+.chatu { width:740px; height:135px; padding-left:10px; }
+.chatu img { display:block; width:200px; height:120px; margin:10px; float:left; }
+.comment-main-item-title { color:#555; }
+.comment-append .comment-mask { background-image:url(http://images.17350.com/images/comment-mask-2.png) }
+.comment-main { width:690px; line-height:20px; padding:20px; position:relative; margin:0 auto }
+.comment-main>ul { max-height:340px; overflow:hidden }
+.comment-main.expanded>ul { max-height:none }
+.comment-main.expanded .comment-expandbar .icon { background-position:-40px -20px }
+.comment-main.expanded .comment-expandbar strong { display:none }
+.comment-main.expanded .comment-expandbar b { display:inline }
+.comment-main.expanded .comment-mask { display:none }
+.comment-main-item { margin-top:10px }
+.comment-main-item:first-child { margin-top:0 }
+.comment-main-item-title { font-size:14px; font-weight:700 }
+.comment-main.expanded>ul { max-height:none }
+.comment-main.expanded .comment-expandbar .icon { background-position:-40px -20px }
+.comment-main.expanded .comment-expandbar strong { display:none }
+.comment-main.expanded .comment-expandbar b { display:inline }
+.comment-main.expanded .comment-mask { display:none }
+.comment-expandbar .icon { background-position:-40px -20px }
+.comment-main.expanded .comment-expandbar strong { display:none }
+.comment-main.expanded .comment-expandbar b { display:inline }
+.comment-main.expanded .comment-mask { display:none }
+.comment-main-item { margin-top:10px }
+.comment-main-item:first-child { margin-top:0 }
+.comment-main-item-title { font-size:14px; font-weight:700 }
+.comment-mask { position:absolute; bottom:28px; left:0; width:100%; z-index:10; background:url(http://images.17350.com/images/comment-mask.png) repeat-x; height:30px }
+.comment-append-type { display:inline-block; width:32px; height:28px; font-size:14px; color:#fff; text-align:right; position:absolute; left:-34px; top:15px; background-color:#e70000; line-height:28px }
+.comment-append-type i { position:absolute; display:inline-block; width:0; height:0; overflow:hidden; border:14px solid transparent; border-right:none; border-left:10px solid #e70000 }
+.comment-expandbar { text-align:right; font-size:12px; margin-top:5px }
+.comment-expandbar .icon { background-position:-40px -70px; width:12px; height:7px; margin-left:5px; position:relative; top:-1px }
+.comment-expandbar span { cursor:pointer; display:inline-block }
+.comment-expandbar span b, .comment-expandbar span strong { font-weight:400 }
+.comment-expandbar span b { display:none }
+
+/*房车样式*/
+.fc_title {text-align:center;}
+.neishi { overflow:hidden;}
+.neishi ul { padding:20px 0px; overflow:hidden;  background-position:50% 48%; width:100%; }
+.neishi li { width:350px; float:left; padding-bottom:20px; margin:0 0 0 40px;height:230px; }
+.neishi li img { width:350px; height:235px; }
+.neishi li.first { margin:0; }
+.neishi p { text-align:right; }
+
+/*房车改装*/
+.fc_gaizhang {overflow:hidden;}
+.fc_gaizhang_left {width:240px;float:left;padding-top:20px;}
+.fc_gaizhang_left img {padding-bottom:10px;}
+.fc_gaizhang_right {width:480px;float:right;padding-top:20px;}
+
+/*客车样式*/
+.keche_title {background:url(http://images.17350.com/images/keche_title.jpg)no-repeat;width:100%;height:40px;line-height:40px;}
+.keche_title span {font-size:26px;color:#fff;font-weight: bold; padding-left: 15px;}
+.kc_jiashi li,.kc_neishi li {padding: 0px;margin:0;padding-right: 20px;height: auto;position: relative;    padding-bottom: 10px;}
+.kc_jiashi li.first,.kc_jiashi li.first img{width: 740px;height: auto;}
+.kc_jiashi li span,.kc_neishi li span {color:#313131;font-size:14px;font-weight:bold;padding: 10px 0px 5px 0px;display: block;}
+.kc_jiashi li p,.kc_neishi li p{text-align:left;color:#313131;font-size:14px;font-weight:lighter;padding-bottom: 10px;}
+.kc_jiashi .fbg_title,.kc_neishi .fbg_title{position:absolute; left: 0px;top: 0px;}
+.kc_neishi li.first,.kc_neishi li.first img {width: 740px;height: auto;}
+.kc_jiashi li:nth-child(2n), .kc_neishi li:nth-child(2n){float:right;}
+
+
+/*订购*/
+.form-wrapper { position: relative; padding:30px 60px; }
+.form-wrapper h2 { font-size: 24px; font-weight: normal; color:#000;text-align:center;}
+.form-wrapper p { color: #ff3c3c; font-size:14px;text-align:center;}
+.form-wrapper span img {width:70px;height:70px;display:block;margin:0 auto;border-bottom:1px #f6f6f6;overflow:hidden;}
+.form-wrapper .input-mobile-wrapper { position: relative; width: 260px; margin-bottom: 10px; }
+.form-wrapper .input-mobile-wrapper input { width: 300px; height: 50px; padding-left: 10px;  margin-top: 20px; border:1px solid #bbb;border-radius:2px;font-size: 16px;font-family: "微软雅黑";}
+.form-wrapper .input-mobile-wrapper input.gou {background:url(http://www.17350.com/statics/images/msg_bg.png) no-repeat;background-position:285px -233px;}
+.form-wrapper .input-mobile-wrapper textarea { width: 300px;padding-top:10px;margin-top:20px; height: 100px; padding-left: 10px; border:1px solid #bbb; border-radius:2px;font-size: 16px;font-family: "微软雅黑";}
+.form-wrapper .submit-btn { width: 310px; height: 48px; background-color: #ff5252; border: none; color: white; font-size: 18px; border-radius: 2px;margin-top:30px;font-family: "微软雅黑";cursor: pointer;}
+.form-wrapper img {vertical-align:middle;padding-right:5px;}
+.dinggou .close-btn { display: block; width: 20px; height: 20px; position: absolute; right: 20px; top: 20px; cursor: pointer; }
+
+
+/*加盟商自营产品*/
+.jxs_detail {overflow:hidden;width:740px;padding:0px 50px 50px 50px;}
+.jxs_title {width:100%;overflow:hidden;padding-bottom: 20px;}
+.jxs_title span.en {font-size:26px;color:#bababa;display:block;font-family:Times New Roman;line-height: 18px;}
+.jxs_title span.cn {font-size:20px;font-weight:bold;color:#fc3030;}
+.jxs_title span.xian {height: 4px;width: 80px;background: #000;display: block;margin-top: 20px;}
+.jxs_detail .fangwei {width:100%;overflow:hidden;padding-top:50px;}
+.jxs_detail .fangwei img {text-align:center;padding-bottom:5px;}
+.jxs_detail .tedian strong {font-size:16px;color:#444444;padding-bottom:20px;line-height:60px;}
+.jxs_detail .canshu_table span {float:right;padding:10px 0px;color:#ff0000;}
+.jxs_detail .tedian p {color:#777777;}
+.jxs_detail .tablebg p {color:#333}
+.jxs_detail .service {padding:0px 50px;;}
+.jxs_detail .service p{background: url(http://images.17350.com/images/pro_icon.png) center center no-repeat;background-position: -25px -446px;line-height: 30px;padding-left: 30px;padding-bottom: 15px;}
+
+/*图库分类*/
+.photo_nav {overflow:hidden;}
+.photo_nav li {float:left;margin-left:25px;}
+.photo_nav .focus {background:#d32727;color:#fff;}
+.photo_nav .focus a {color:#fff;}
+.photo_nav a{ padding:5px 15px;color:#313131;}
+.photo_nav a:hover{ background:#d32727; color:#ffffff;}
+.photo_nav span { color:#313131; font-size:14px;padding:3px 12px; border-radius:2px;font-weight:bold;}
+
+/*图区*/
+.photo_title{border-bottom:1px solid #ccc;padding-bottom: 5px;}
+.photo_title span{border-bottom:1px solid #ff0000;font-size: 16px;padding: 7px 10px;color: #333;font-weight: bold;}
+.photo_title a.more{color:#ff0000;}
+.photo_list {width: 91%;float:left;padding: 0px 30px;}
+.photo_list ul{overflow:hidden;margin-bottom:20px;}
+.photo_list li{float:left;padding:0 5px 15px 5px;}
+.photo_list .img {width:230px;height:153px;overflow:hidden;}
+.photo_list .img a {width:230px;height:153px;text-align:center;vertical-align:middle;display:table-cell;}
+.photo_list .img img {width:230px;display:inline;vertical-align:middle; max-width:none; opacity:0.9; }
+.photo_list .text{background-color:#ffffff;width: 230px;padding-top: 10px;text-align:center;}
+.photo_list .text span{font-size:12px;color:#313131;text-align:center;}
+
+/*经销商联系页*/
+#shop-rating {width: 120px; height: 25px; overflow: hidden; position: relative; float:left;margin-top: 7px;}
+.rating-level,  .rating-level span ,.pinfen,.pinfen s{ background: url(http://images.17350.com/images/grade/o_star.png) no-repeat 9999px 9999px; /* 必要 */ }
+.rating-level {background-position: 0 0; width: 120px; height: 23px; position: relative; }
+.rating-level li { display: inline; }
+.rating-level span { height: 23px; position: absolute; text-indent: -2222px; }
+.rating-level .one-star { width: 20%; z-index: 6; }
+.rating-level .two-star { width: 40%; z-index: 5; }
+.rating-level .three-star { width: 60%; z-index: 4; }
+.rating-level .four-star { width: 80%; z-index: 3; }
+.rating-level .five-star { width: 100%; z-index: 2; }
+.rating-level .one-star:hover,  .rating-level .two-star:hover { background-position: 0 -116px; }
+.rating-level .three-star:hover,  .rating-level .four-star:hover,  .rating-level .five-star:hover { background-position: 0 -28px; }
+.comment-form{border: 1px #ccc solid;    padding: 10px;}
+.comment-form h5{border-bottom: 1px #ccc solid;    line-height: 40px;}
+.comment-form h5 strong{font-size: 18px;}
+.comment-form h5 span.rt{float: right;}
+.comment-form h5 span.fn{color: #ccc;}
+.comment-form h5 font{color: #ff0000;}
+.comment-form .rate{line-height: 40px;}
+.pinfen,.zonghe .pinfen{background-position: 0 0;width: 150px;margin-left: 30px;position: relative;}
+.pinfen s,.zonghe .pinfen s{background-position: 0 -28px;width: 120px;height: 26px; display: inline-block;position: absolute; left: 0;}
+/*.liangdian_title{padding-bottom:0;height: initial;}*/
+.liangdian_title .button{display: inline-block;margin: 0 0 0 30px;}
+.liangdian_title .button:hover{color: #fff;}
+/*CSS Document */
+
+</style>
+</head>
+<body style="width:100%;height:100%;">
+<!-- 总体 -->
+<div style="width:1200px;margin:0 auto;">
+
+<div id="head" style="height:12rem;width:100%;">
+
+</div>
+
+  <script>
+  console.log(document.getElementById("tail"))
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      </script>
+
+
+
+<!-- 上方条件 -->
+<div class="zhanshi">
+    <div class="show_left">
+      <div class="preview">
+	<div id="vertical" class="bigImg">
+		<img src="http://upload.17350.com/2019/0125/20190125113448986.jpg" width="500" height="360" alt="压缩液压泵" id="midimg">
+		<div style="left: 265px; top: 0px; display: none;" id="winSelector"></div>
+	</div><!--bigImg end-->	
+	<div class="smallImg">
+		<div class="scrollbutton smallImgUp disabled"></div>
+		<div id="imageMenu">
+			<ul>				<li id="onlickImg"><img src="http://upload.17350.com/2019/0125/20190125113448986.jpg" alt="压缩液压泵"></li>
+								<li><img src="http://upload.17350.com/2019/0125/20190125113448947.jpg" alt="压缩液压泵2"></li>
+							</ul>
+		</div>
+		<div class="scrollbutton smallImgDown"></div>
+	</div><!--smallImg end-->	
+	<div id="bigView" style="width: 559.77px; height: 504.505px; top: 75px; left: 583.5px; display: none;"><img width="auto" height="800" alt="压缩液压泵" src="http://upload.17350.com/2019/0125/20190125113448986.jpg" style="left: -631.23px; top: 0px;"></div>
+</div>
+<!--preview end-->
+</div>
+    <div class="show_rihgt">
+        <h1>压缩式垃圾车专用液压泵/垃圾车配件/液压泵</h1>
+        <p class="red">工作平稳、噪音小、寿命长</p>
+        <span>专汽网优惠价：<em class="font24px f_red">仅供参考</em></span>
+        <span>配送方式：<a href="/about/yonghuziti.html">自提</a>，<a href="/about/songhuoshangmen.html">送货上门</a>，<a href="/about/haiwaipeisong.html">海外配送</a>。</span>
+        <span>服&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;务：由专汽网协调厂家发车并提供售后服务。</span>
+        <span>适用车型：<a href="/peijian/ljc/" target="_blank">垃圾车配件</a><a href="" target="_blank"></a></span>
+		<span>品牌型号：压缩式垃圾车专用液压泵</span>
+        <span>支付方式：<a href="/about/fenqifukuan.html">分期付款</a>，<a href="/about/songhuoshangmen.html">送货上门</a>，<a href="/about/haiwaipeisong.html">海外配送</a>。</span>
+		<div class="blank_20"></div>
+          <div class="che_btn0">
+		  
+			<li><input type="button" value="立即购买" onclick="EV_modeAlert('envon')"></li>
+			<li><form action="?m=content&amp;c=index&amp;a=addcar" method="post">
+				<input type="hidden" value="403" name="pid">
+				<input type="hidden" value="52" name="catid">
+				<input type="hidden" value="" name="tablename">
+				<input type="hidden" value="" name="price">
+				<input type="hidden" value="1" name="number">
+				<input type="hidden" value="压缩式垃圾车专用液压泵/垃圾车配件/液压泵" name="title">
+				<input type="hidden" value="配件名称型号压缩式垃圾车专用液压泵XX" name="description">
+				<input type="hidden" value="http://upload.17350.com/2019/0125/20190125113448986.jpg" name="thumb">
+				<input type="submit" value="加入购物车" class="che_btn0" style="display:none;">
+			</form>
+			</li>
+			
+	      <div id="envon" class="dinggou">
+		    <div class="form-wrapper">
+		      <h2>请输入你的手机号</h2>
+		      <p>我们将为您保留车源，并主动联系您</p>
+		      <div class="input-mobile-wrapper control-group">
+		        <input id="schedule_name" type="text" placeholder="请输入您的姓名" class="textipt">
+		        <input id="schedule_mobile_number" type="text" placeholder="请输入您的手机号" class="textipt">
+		        <textarea id="schedule_des" type="text" placeholder="请输入您的具体要求"></textarea>
+		        <i class="input-mobile-icon"></i>
+		        <input id="schedule_phone_source" type="hidden" value="bd_other">
+		      </div>
+		      <button id="schedule_submit" class="submit-btn" type="submit">提交</button>
+		    </div>
+		    <div class="close-btn" onclick="javascript:EV_closeAlert()"><img src="http://images.17350.com/images/close1.png"></div>
+	      </div>
+		</div>
+<script type="text/javascript">
+$('#schedule_mobile_number').blur(function(){
+	var mobile = $(this).attr('value');
+  var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+  if(!myreg.test(mobile)||mobile.length==0||mobile.length!=11) 
+  { 
+    $(this).nextUntil('textarea').remove();
+	$(this).after('<b style="color:red;float:left;font-weight:normal;margin-bottom:-20px;width:270px;"><img src="http://images.17350.com/images/error_icon.jpg">输入错误，请重新输入您的手机号码！</b>'); 
+	$(this).removeClass('gou');
+  }else{//手机号是对的，下面加个样式
+	$(this).nextUntil('textarea').remove();
+	$(this).addClass('gou');
+  }
+});
+$('#schedule_name').blur(function(){
+	var name=$(this).attr('value');
+	if($.trim(name)!="") {
+	 $(this).addClass('gou');
+	}
+  
+});
+$('#schedule_submit').click(function(){
+  var mobile = $('#schedule_mobile_number').attr('value');
+  var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+  if(!myreg.test(mobile)||mobile.length==0||mobile.length!=11) 
+  { 
+    $('#schedule_mobile_number').focus().nextUntil('textarea').remove();
+	$('#schedule_mobile_number').after('<b style="color:red;float:left;font-weight:normal;margin-bottom:-20px;width:270px;"><img src="http://images.17350.com/images/error_icon.jpg">输入错误，请重新输入您的手机号码！</b>'); 
+    return false; 
+  } 
+  $('#schedule_mobile_number').nextUntil('textarea').remove();
+  var phone_source = $('#schedule_phone_source').attr('value');
+  var name = $('#schedule_name').attr('value');
+  var des = $('#schedule_des').attr('value');
+  $.post(
+    "/index.php?m=seller&c=index&a=public_add",
+    {sell_mobile_number:mobile,
+      name:name,
+      des:des,
+      sell_tag_id:52,//分类
+      sell_series_id:403,//ID
+      sell_phone_source:$('#schedule_phone_source').attr('value')
+	},
+    function(result){
+		console.log(result);
+	  //$('#schedule_modal').addClass("hide");
+      if(result==0){
+        //$('#success_modal').removeClass('hide');
+		$('#envon').html('<span style="font-size:24px;color:#141b2e;padding-bottom:50px;text-align:center;">您已经预约成功！</span><span style="font-size:18px;color:#888888;padding-bottom:50px;background:url(http://images.17350.com/images/service_icon.png)no-repeat;padding-left:80px;background-size:70px 70px;text-align:left;">工作人员将于24小时内电话联系您!请注意接听</span><span style="font-size:24px;color:#ff5252;text-align:center;">谢谢！</span><div class="close-btn" onclick="javascript:EV_closeAlert()"><img src="http://images.17350.com/images/close1.png"></div>');
+		//$('#envon').siblings().remove();
+        //$("body").append("<div class=\"modal-backdrop  in\"></div>");
+      }else{
+	    $('#envon h2').html('预约失败！<br>请致电：180-0866-5020，谢谢！');
+		$('#envon h2').siblings().remove();
+	  }
+    }
+  );
+
+  //alert('click');
+});
+
+</script>          <div class="share_baidu">
+                <!-- Baidu Button BEGIN -->
+                <div class="bdsharebuttonbox bdshare-button-style0-16" data-bd-bind="1443072125684"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a></div>
+                <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"16"},"share":{},"image":{"viewList":["sqq","qzone","weixin","tsina","tqq","renren"],"viewText":"分享到：","viewSize":"16"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+				</script>
+                <!-- Baidu Button END -->
+            </div>
+    </div>
+  <div style="clear:both"></div>
+ </div>
+
+
+
+<div class="canshu_right">
+    
+    <div class="ce">
+        <li><a id="jianjie" class="xz" href="javascript:void(0)">商品简介</a></li>
+        <li><a id="cansu" href="javascript:void(0)" class="">具体参数</a></li>
+        <li><a id="chexing" href="javascript:void(0)" class="">适用车型</a></li>
+        <li><a id="caigou" href="javascript:void(0)">采购流程</a></li>
+        <li><a id="xuzhi" href="javascript:void(0)">购买须知</a></li>
+    </div>
+    <div class="pj_detail">
+      <div id="div0" class="m_b20">
+		<div class="pj_title">商品简介</div>
+         <div class="pj_jieshao">
+           <div class="jieshao_txt">
+             压缩式垃圾车上专用的液压泵，对各液压缸提供液压油动力，当液压管路没有压力时，请检查液压泵，如果损坏严重需要更换。           </div>
+          <div class="jieshao_img">
+            <img src="http://upload.17350.com/2019/0125/20190125113448986.jpg" alt="压缩液压泵">
+          </div>
+       </div>
+      </div>
+       <!--具体参数-->  
+      <div id="div1" class="m_b20">    
+         <div class="pj_title">具体参数</div>     
+         <div class="pj_table"><table border="1" width="290"><tbody><tr class="firstRow"><td><strong>配件名称 </strong></td><td style="word-break: break-all;"><strong>型号</strong></td></tr><tr><td>压缩式<a href="http://www.17350.com/lajiche/" target="_blank" class="keylink">垃圾车</a>专用液压泵</td><td>XX</td></tr></tbody></table></div>
+     </div>
+	 	      <!--产品展示-->  
+      <div id="div2" class="m_b20">     
+         <div class="pj_title">产品展示</div>   
+         <div class="zhanshi_img">
+         <ul>
+            				<li class="first"><img src="http://upload.17350.com/2019/0125/20190125113448947.jpg" alt="压缩液压泵2"></li>
+			  
+			</ul>
+          </div>
+     </div>   
+	      <!--适用车型--> 
+      <div id="div3" class="m_b20">    
+       <div class="pj_title">适用车型</div>      
+<div class="shiyong_car">
+     <div class="jiantou f_left"><a href="javascript:;" id="PeLeftlis"><img src="http://images.17350.com/images/pj_iconleft.jpg" alt="左"></a></div>
+			   <ul class="f_left" id="img_scroll2lis" style="width: 660px; overflow: hidden;"><div style="overflow: hidden; zoom: 1; width: 32766px;"><div style="float: left;">
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/yasuoljc/4128.html"><img src="http://upload.17350.com/2020/0118/20200118102112558.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/yasuoljc/4128.html">重汽汕德卡右驾后双桥压缩式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zxsljc/4127.html"><img src="http://upload.17350.com/2020/0118/20200118101022921.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zxsljc/4127.html">大运祥龙国六自卸式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zzxsljc/4126.html"><img src="http://upload.17350.com/2020/0117/20200117112441172.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zzxsljc/4126.html">凯马国六单桥自装卸式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/ccljc/4124.html"><img src="http://upload.17350.com/2020/0117/20200117105526108.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/ccljc/4124.html">福田欧马可S5国六餐厨式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/ccljc/4122.html"><img src="http://upload.17350.com/2020/0117/20200117101545861.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/ccljc/4122.html">时风风驰国六餐厨式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zzxsljc/4082.html"><img src="http://upload.17350.com/2020/0109/20200109103406477.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zzxsljc/4082.html">长安国六挂桶式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+			     </div><div style="float: left;">
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/yasuoljc/4128.html"><img src="http://upload.17350.com/2020/0118/20200118102112558.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/yasuoljc/4128.html">重汽汕德卡右驾后双桥压缩式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zxsljc/4127.html"><img src="http://upload.17350.com/2020/0118/20200118101022921.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zxsljc/4127.html">大运祥龙国六自卸式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zzxsljc/4126.html"><img src="http://upload.17350.com/2020/0117/20200117112441172.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zzxsljc/4126.html">凯马国六单桥自装卸式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/ccljc/4124.html"><img src="http://upload.17350.com/2020/0117/20200117105526108.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/ccljc/4124.html">福田欧马可S5国六餐厨式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/ccljc/4122.html"><img src="http://upload.17350.com/2020/0117/20200117101545861.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/ccljc/4122.html">时风风驰国六餐厨式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+				    <li>
+                     <div class="img"><a href="https://www.17350.com/zzxsljc/4082.html"><img src="http://upload.17350.com/2020/0109/20200109103406477.jpg"></a></div>
+					  <div class="text"><a href="https://www.17350.com/zzxsljc/4082.html">长安国六挂桶式垃圾车</a><span><a href="http://p.qiao.baidu.com//im/index?siteid=7266564&amp;ucid=9843870" target="_blank" class="price red">询问底价</a></span></div>
+                    </li>
+			     </div></div></ul>
+            <div class="jiantou f_right"><a href="javascript:;" id="PeRightslis"><img src="http://images.17350.com/images/pj_iconright.jpg" alt="右"></a></div>
+            </div>
+		  <script type="text/javascript">
+    $(function () {
+        var adsdls = new ScrollPicleft();
+        adsdls.scrollContId = "img_scroll2lis"; // 内容容器ID""
+        adsdls.arrLeftId = "PeLeftlis"; //左箭头ID
+        adsdls.arrRightId = "PeRightslis"; //右箭头ID
+        adsdls.frameWidth = 660; //显示框宽度
+        adsdls.pageWidth = 311; //翻页宽度
+        adsdls.speed = 10; //移动速度(单位毫秒，越小越快)
+        adsdls.space = 10; //每次移动像素(单位px，越大越快)
+        adsdls.autoPlay = true; //自动播放-
+        adsdls.autoPlayTime = 2; //自动播放间隔时间(秒)
+        adsdls.initialize(); //初始化
+    }); 
+</script>
+</div>
+
+    <!--购车流程-->  
+    <div id="div4" class="m_b20"> 
+      <div class="pj_title">采购流程</div>    
+      <div class="liucheng_tu"><img src="http://images.17350.com/images/pj_liucheng.jpg"></div>
+    </div>  
+    <!--购车须知-->  
+<div id="div5"> 
+<div class="pj_title">购买须知</div> 
+<div class="xuzhi_txt">
+<p>1.您须确认自身具备相应的民事权利能力、民事行为能力及车辆购买资格，该等购车资格包含但不限于具有购买相应车辆所需要的机动车驾驶资格证及符合车辆上牌地的相应限购政策或其他政策（如有）；</p>
+<p>2.您参与本次活动即视为对专汽网的活动流程、活动细则、注意事项及其他相关规则完全理解和接受，否则您将不被允许参与本次活动；</p>
+<p>3.您在完成车款的选择并成功在线支付购车订金后，系统将向您发送购车验证码以确认下单成功，该订金为车辆出售方授权专汽网代车辆出售方收取；</p>
+<p>4.下单成功仅代表您具备享有优惠购车的初步资格，并不作为最终购得车辆的凭证，下单后无法购买车辆的，请直接与出售方联系，专汽网仅作为交易提供平台及根据授权向您收取订金，不对您与出售方的行为承担任何责任；</p>
+<p>5.车辆出售方在专汽网展现的车辆价格仅限活动期间且仅在专汽网有效，凡超出车辆出售方在专汽网发布的活动范围、活动期限或来自其他渠道的车辆价格，专汽网对此不承担任何责任；因市场价格波动引发车辆出售方调整线下的汽车售价，专汽网对此不承担任何责任；您与汽车出售方及任何第三方产生的线下任何交易，与专汽网无关；具体成交车型价格以您到店内最终购车为准，专汽网对此不做任何担保且就您与出卖方因此引发的争议，专汽网作为平台提供方，不承担任何责任。</p>
+<p>6.您成功支付订金后，专汽网客服将尽快致电您与您进一步确认购车意向；如您同意购车，专汽网客服将与您确认具体购车日期，并向您发送提车信息的短信通知，包括：购买车型信息、需支付尾款信息、提车日期、提车地点等内容；您需在确认同意购车后10天内至车辆出售方提车（各车型如有具体提车日期说明，以客服通告为准）；</p>
+<p>7.在您到店提车时，车辆出售方将依据短信购车验证码确认您的身份，为保证您的权益，请您务必妥善保存；</p>
+<p>8.专汽网仅作为提供车辆出售方优惠政策及相关信息的发布平台，并不对车辆出售方的产品信息（含销售信息）、产品品质等提供任何承诺或担保。您在选定车辆、下单、与车辆出售方进行具体交易过程中专汽网仅向您提供您与车辆出售方间订立合同、交易车辆的机会或者向您提供您与车辆出售方间订立合同、交易车辆的媒介服务；在您与车辆出售方交易过程中，由于包括但不限于车辆质量、性能、颜色、售后服务等原因产生的纠纷，须由您和车辆出售方及任何第三方自行解决，专汽网对此不承担任何责任；购车发票、汽车质量三包、汽车售后服务等均由车辆出售方独自负责，专汽网对此不提供任何保证；请您务必谨慎选择车辆出售方及谨慎鉴别、挑选和购买车辆，并注意在与车辆出售方交易时保护自身的合法权益；</p>
+<p>9.专汽网在法律允许的范围内对本次活动及相关规则具有最终解释权。</p>
+</div>    
+</div>    
+      </div>
+  </div>
+
+</div>
+
+
+
+
+
+<div id="tail"></div>
+
+  <script>
+  	 document.getElementById("head").innerHTML = '<object type="text/html" data="head.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+      document.getElementById("tail").innerHTML = '<object type="text/html" data="tail.html" style="width:100%;height:100%;overflow:hidden;"></object>';
+     
+      
+      get_type()
+      //根据区域获取服务站..分页
+      function get_type(){
+    	  
+    	  
+    	  var paramter={
+    	//		  title:document.getElementById("Inquire_title_input").value
+      		   }
+    	
+    	  var dataarr=zw.ajax({url:"../service_query",parameter:paramter}).data;
+    	  
+    	  
+    	  var service_content= document.getElementById('category');
+    	  console.log(dataarr)
+    	  for(var i=0;i<dataarr.length;i++){
+    		  console.log(dataarr[i])
+    		service_content.innerHTML +=''
+    			+' 	    <div class="category_content">'
+    		    +' 		 <div class="category_content_big"><a href="#">环卫绿化</a></div>'
+			 +' 	     <ul>'
+			     +' 			 <li class="category_content_small">'
+					 +' 				<a href="/sashuiche/" target="_blank"> 洒水车</a>'
+							+' 		</li>'
+					+' 		 <li class="category_content_small">'
+					 +' 				<a href="/saoluche/" target="_blank">扫路车</a>'
+							+' 		</li>'
+					+' 		 <li class="category_content_small">'
+					 +' 			<a href="/xsc/" target="_blank">洗扫车</a>'
+							+' 	</li>'
+					+' </ul>'
+				 +' </div>';
+    	  }
+    	  
+    	  
+      }
+      
+      
+      
+      get_pagination()
+      //根据区域获取服务站..分页
+      function get_pagination(){
+    	  
+    	  
+    	  var paramter={
+    	//		  title:document.getElementById("Inquire_title_input").value
+      		   }
+    	
+    	  var dataarr=zw.ajax({url:"../service_query",parameter:paramter}).data;
+    	  
+     
+    	  
+    	  var service_content= document.getElementById('content_list');
+    	  console.log(dataarr)
+    	  for(var i=0;i<dataarr.length;i++){
+    		  console.log(dataarr[i])
+    		service_content.innerHTML +=''
+    			+'     <li>'
+    		     +'     <div class="img"><a href="./before_car_details.html">'
+		     +'    <img src="http://upload.17350.com/2018/0407/20180407015727278.jpg" border="0" width="120" height="120" alt="湖北大运风度10方洒水车"></a></div>'
+		     +'   <div class="txt"><a href="./before_car_details.html">湖北大运风度10方洒水车</a>'
+		     +'   <span>玉柴140马力</span>'
+		     +'<div class="price f_5d5d5d">优惠价：万元</div>'
+			+'</div>'
+			+' </li>';
+    	  }
+    	  
+    	  
+         
+         //分页器
+          zw.create_pagination({id:"pagination",total:dataarr.count,rows:10,current:1,content: function(current ){  
+        			  paramter.current=(current||1)
+       				  var dataarr=zw.ajax({url:"../service_query",parameter:paramter}); 
+        		//   zw.create_table({cols:table_cols,data:dataarr.data,id:"table"});
+       		    }
+          })
+    	  
+    	  
+      }
+      
+      
+      
+      
+      
+      
+      </script>
+
+</body>
+</html>

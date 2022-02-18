@@ -1,0 +1,453 @@
+<!--  
+1.先用div画框架
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />  
+<title>惠购专用车网，省钱-省时-省心</title>
+<script src="zw.js"></script>
+<style type="text/css">
+
+/* ____________总体样式 */
+body {
+    position: relative;
+    font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", "FontAwesome", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
+    color: #333333;
+    background: #f0f0f0;
+}
+ul, li,ol {
+    list-style: none;
+     padding: 0;
+}
+
+a {
+    color: #808080;
+}
+/* ____________总体样式结束 */
+
+
+
+
+
+
+
+.am-slides, .am-control-nav, .am-direction-nav {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.am-slider-c3 {
+    box-shadow: 0 1px 4px rgba(0,0,0,.2);
+      position: relative;
+        margin: 1rem 0;
+    padding: 0;
+}
+.am-slider-c3 .am-viewport {
+    max-height: 2000px;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+  .am-paragraph-default p{text-indent:0em;}
+  
+  
+  .am-slider .am-slides:before, .am-slider .am-slides:after {
+    content: " ";
+    display: table;
+}
+
+.am-slider .am-slides > li {
+    display: none;
+    -webkit-backface-visibility: hidden;
+    position: relative;
+}
+
+.am-slider .am-slides img {
+    width: 100%;
+    display: block;
+}
+
+img {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    vertical-align: middle;
+    border: 0;
+}
+
+.am-slider .am-slides:after {
+    clear: both;
+}
+
+.am-slider-c3 .am-direction-nav a.am-prev {
+    left: 0;
+    padding-right: 5px;
+}
+
+
+.am-slider-c3 .am-direction-nav a.am-next {
+    right: 0;
+    padding-left: 5px;
+}
+.am-slider-c3 .am-direction-nav a {
+    display: block;
+    height: 24px;
+    padding: 4px 0;
+    margin: -16px 0 0;
+    position: absolute;
+    top: 50%;
+    cursor: pointer;
+    color: #fff;
+    background-color: rgba(0,0,0,.5);
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+/*————————————————————————————————中间商品介绍 */
+.am-pro {
+    background-color: #fff;
+    overflow: hidden;
+    padding: 1em 0em;
+    width: 100%;
+}
+
+
+.am-paragraph-default {
+    margin: 0 10px;
+    color: #333333;
+    background-color: transparent;
+}
+
+.am-paragraph-default {
+    margin: 0 10px;
+    color: #333333;
+    background-color: transparent;
+}
+
+.am-paragraph-default h1 {
+    font-size: 1.6rem;
+}
+
+.am-paragraph-default p {
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+    text-indent: 0em;
+}
+.am-paragraph-default a {
+    color: #000;
+}
+
+ins, a {
+    text-decoration: none;
+}
+a {
+    background-color: transparent;
+}
+.am-paragraph-default a.button {
+    color: #ff0000;
+}
+
+
+
+
+
+/* ——————————————————————————————商品介绍 */
+.doc-example {
+    background-color: #fff;
+    font-size: 1rem;
+}
+
+.scrollspy-nav {
+    top: 0;
+    z-index: 100;
+    background: #333;
+    width: 100%;
+    padding: 0 0.5rem;
+    border-left: 3px solid #ff0000;
+    border-right: 3px solid #ff0000;
+}
+
+.scrollspy-nav ul {
+    margin: 0;
+    padding: 0;
+}
+.scrollspy-nav li {
+    display: inline-block;
+    list-style: none;
+}
+.scrollspy-nav a.am-active {
+    color: #fff;
+    font-weight: 700;
+}
+.scrollspy-nav a {
+    color: #eee;
+    padding: 0.5rem 0.44rem;
+    display: inline-block;
+}
+
+/* 内容 */
+.am-panel {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 0;
+    -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+.am-panel-default {
+    border-color: #dddddd;
+}
+.am-panel {
+    margin-top: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#onlick_img img{
+width:100%;
+float:left;
+display: block;
+}
+
+</style>
+</head>
+<body >
+
+
+
+<!-- 调节li标签得dospay就行 -->
+
+<div data-am-widget="slider" class="am-slider am-slider-c3 am-no-layout" data-am-slider="{&quot;controlNav&quot;:false}">
+  
+<div class="am-viewport" style="overflow: hidden; position: relative;">
+<ul id="onlick_img"   >
+
+
+	   </ul>
+	   </div>
+	   
+	   
+	   <ul class="am-direction-nav">
+	   <li class="am-nav-prev"><a class="am-prev" href="#"> 上一张</a></li>
+	   <li class="am-nav-next"><a class="am-next" href="#">下一张</a></li>
+	   </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="am-pro am-padding-top am-padding-bottom">
+<div class="am-paragraph-default">
+    <h1 id="title"></h1>
+    <span id="horsepower">康明斯130马力</span>
+    <hr >
+    <p>专汽网优惠价： 
+						<a href="tel:18008665020" target="_blank" >咨询底价</a>
+			
+	</p>
+    <p>配送方式：<a href="https://www.17350.com/about/yonghuziti.html" target="_blank">自提</a>，<a href="https://www.17350.com/about/songhuoshangmen.html" target="_blank">送货上门</a>，<a href="https://www.17350.com/about/haiwaipeisong.html" target="_blank">海外配送</a></p>
+    <p>服务：由专汽网协调厂家发车并提供售后服务。</p>
+    <p>车型颜色：喷漆可选</p>
+    <p>生产周期：下订单起7天内交货</p>
+    <p>支付方式：<a href="https://www.17350.com/about/fenqifukuan.html" target="_blank">分期付款</a>，<a href="https://www.17350.com/about/songhuoshangmen.html" target="_blank">送货上门</a>，<a href="https://www.17350.com/about/zhuanzhang.html" target="_blank">公司转帐</a></p>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="doc-example">
+     <div class="am-sticky-placeholder" style=" margin: 0px;">
+         <div class="am-sticky-placeholder" style="height: 44px;"><nav class="scrollspy-nav" data-am-scrollspy-nav="{offsetTop: 45}" data-am-sticky="" style="margin: 0px;">
+             <ul>
+			     <li><a href="#jieshao" class="am-active">商品介绍</a></li>
+				 <li><a href="#div1" class="">具体参数</a></li>
+			 </ul>
+         </nav></div>
+     </div>
+<div class="am-panel am-panel-default" id="introduction">
+	</div>
+	
+	<div class="am-panel am-panel-default" id="parameter">
+	</div>
+</div>
+
+
+
+
+
+<div class="phone_on">
+    <ul>
+       <li><a href="javascript:void(0)">关于专汽网</a></li>
+       <li><a href="javascript:void(0)">文章中心</a></li>
+       <li><a href="javascript:void(0)">意见反馈</a></li>
+    </ul>
+</div>
+
+
+
+
+
+    <div class="phone_copyright">
+        <p>Copyright © 2014-2017 All Rights Reserved.</p>
+        <p> 湖北专汽网科技有限公司 版权所有</p>
+    </div>
+
+
+
+
+
+
+
+
+
+<div class="phone_bottom">
+	  <a href="http://www.17350.com/" class="home">
+	  <img src="http://images.17350.com/images/m_icon00.png"></a>
+	  <a href="http://www.17350.com/product/" class="zhenche">
+	  <img src="http://images.17350.com/images/m_icon01.png"></a>
+	  <a href="http://wpa.qq.com/msgrd?V=1&amp;uin=1735095511&amp;Site=专汽网&amp;Menu=yes'" target="_blank">
+	  <img src="http://images.17350.com/images/m_icon02.png"></a>
+	  <a href="tel:18008665020" class="phone">
+	  <img src="http://images.17350.com/images/m_icon03.png"></a> 
+	  </div>
+
+
+
+
+
+</body>
+  <script>
+      
+      
+      function getQueryString(name) {
+    	  var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+    	  var r = window.location.search.substr(1).match(reg);
+    	  if (r != null) {
+    	  return unescape(r[2]);
+    	  }
+    	  return null;
+    	  }
+      
+      get_data()
+    	  //获取信息
+      function get_data(){
+    	  
+    	 var paramter={
+    		  id:getQueryString('id')
+    	  }
+    	  var dataarr=zw.ajax({url:"../parts_query",parameter:paramter}).data;
+     
+    	var vertical_img= document.getElementById('onlick_img');
+	  var images_arr=decodeURIComponent(dataarr[0]["images"]).split("||")
+		for(let i=0;i<images_arr.length-1;i++){
+			
+			onlick_img.innerHTML +='<li  id="images'+i+'" style="display: none;">'+images_arr[i]+'</li>';
+			
+		}
+		
+	  hide_and_show("images0")
+	  
+	   var title= document.getElementById('title');
+	  title.innerHTML=dataarr[0].title;
+	  
+	   var horsepower= document.getElementById('horsepower');
+	   horsepower.innerHTML=dataarr[0].horsepower;
+	  
+	   var introduction= document.getElementById('introduction');
+	   introduction.innerHTML=decodeURIComponent(dataarr[0].introduction);
+	  
+	   
+	   var parameter= document.getElementById('parameter');
+	   parameter.innerHTML=decodeURIComponent(dataarr[0].parameter);
+	  
+    	  
+      }
+      
+      
+      function hide_and_show(id){
+    	  
+    	  var name_arr = document.getElementsByName("image_arr");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        		  name_arr[i].style.display='none';  //隐藏所有
+	        }
+    	  document.getElementById(id).style='display: block;'
+    	  
+      }
+      function hide_and_show_content(id){
+    	  
+    	  
+    	  var name_arr = document.getElementsByName("content");
+    	  var li_arr = document.getElementsByName("content_li");
+	        for(var i = 0; i < name_arr.length; i++) {
+	        		  name_arr[i].style.display='none';  //隐藏所有
+	        		  li_arr[i].className	=li_arr[i].className.replace('car_details_thistab',"")
+	        }
+    		  
+    	  document.getElementById(id).style='display: block;';
+    	  //添加样式
+    	  var dom_class = document.getElementById(id+"_li").className;
+      	dom_class = dom_class.concat('car_details_thistab');
+      	document.getElementById(id+"_li").className = dom_class;
+      }
+      
+      
+      
+      </script>
+</html>
